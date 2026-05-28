@@ -3,58 +3,59 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Play, ArrowRight, Star, Users, BookOpen, Award,
-  CheckCircle, TrendingUp, Sparkles
+  CheckCircle, TrendingUp, Sparkles, Clock
 } from 'lucide-react';
 import './Hero.css';
 
 const stats = [
-  { value: '50K+', label: 'Students Enrolled', icon: <Users size={18} /> },
-  { value: '200+', label: 'Expert Courses', icon: <BookOpen size={18} /> },
-  { value: '95%', label: 'Placement Rate', icon: <TrendingUp size={18} /> },
-  { value: '4.9★', label: 'Average Rating', icon: <Star size={18} /> },
+  { value: '1000+', label: 'Learning Hours', icon: <Clock size={18} /> },
+  { value: '10.7K+', label: 'Registered Learners', icon: <Users size={18} /> },
+  { value: '50%', label: 'Avg Salary Hike', icon: <TrendingUp size={18} /> },
+  { value: '100+', label: 'Hiring Partners', icon: <Award size={18} /> },
 ];
 
-const trustBadges = [
-  'Industry-Recognized Certificates',
-  'Live Project Experience',
-  'Mentor-Led Learning',
-  'Career Support',
+const trustPoints = [
+  'Build professional projects with professionals.',
+  'Master the current cutting-edge technologies',
+  'Crack your dream role at the best tech companies',
 ];
 
 const floatingCards = [
   {
     id: 1,
-    icon: '🎯',
-    title: 'New Course',
-    subtitle: 'Full Stack Development',
-    extra: '2.4k enrolled',
-    position: { top: '15%', right: '-40px' },
+    icon: '🚀',
+    title: 'Career Launchpad',
+    subtitle: 'Software Development with Gen AI',
+    extra: 'Free Demo Available',
+    position: { top: '10%', right: '-30px' },
     delay: 0,
   },
   {
     id: 2,
     icon: '🏆',
-    title: 'Achievement',
-    subtitle: 'Course Completed!',
-    extra: 'Certificate Earned',
-    position: { bottom: '25%', left: '-50px' },
+    title: 'Placement Guaranteed',
+    subtitle: '100+ Hiring Partners',
+    extra: '50% Avg Salary Hike',
+    position: { bottom: '28%', left: '-40px' },
     delay: 0.4,
   },
   {
     id: 3,
     icon: '⚡',
-    title: 'Live Session',
-    subtitle: 'AI & ML Masterclass',
-    extra: 'Starting in 2h',
-    position: { bottom: '10%', right: '10%' },
+    title: 'Live Classes',
+    subtitle: '1-1 Assistance Available',
+    extra: '4 hr/week schedule',
+    position: { bottom: '8%', right: '8%' },
     delay: 0.8,
   },
 ];
 
+const partners = ['Accenture', 'Zoho', 'Microsoft', 'Amazon', 'Walmart', 'Cognizant'];
+
 export default function Hero() {
   const [videoOpen, setVideoOpen] = useState(false);
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Careers', 'Skills', 'Futures', 'Dreams'];
+  const words = ['Career', 'Skills', 'Future', 'Life'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -90,42 +91,39 @@ export default function Hero() {
             >
               <span className="hero-badge-dot" />
               <Sparkles size={14} />
-              India's #1 Tech EdTech Platform — Now with AI Mentoring
+              India's Work-Experience Based Learning Platform
             </motion.div>
 
             {/* Heading */}
             <h1 className="hero-heading">
-              Transform Your
-              <span className="hero-heading-highlight">
-                {' '}
-                <span className="word-cycle">
-                  <motion.span
-                    key={currentWord}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.35 }}
-                    className="word-cycle-item"
-                  >
-                    {words[currentWord]}
-                  </motion.span>
-                </span>
+              Learn Just Like You Would Be in the{' '}
+              <span className="word-cycle">
+                <motion.span
+                  key={currentWord}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="word-cycle-item"
+                >
+                  {words[currentWord]}
+                </motion.span>
               </span>
-              <br /> with World-Class Learning
+              <br />
+              <span className="hero-heading-highlight">Best Tech Companies in India</span>
             </h1>
 
             <p className="hero-subtitle">
-              Join 50,000+ learners mastering in-demand tech skills through live
-              mentorship, hands-on projects, and industry-recognized certifications
-              built for real-world success.
+              Work-experience-based learning personalized way programs to
+              Supercharge your career and land your dream tech job.
             </p>
 
-            {/* Trust Badges */}
+            {/* Trust Points */}
             <div className="hero-trust">
-              {trustBadges.map((badge) => (
-                <span key={badge} className="hero-trust-item">
+              {trustPoints.map((point) => (
+                <span key={point} className="hero-trust-item">
                   <CheckCircle size={14} />
-                  {badge}
+                  {point}
                 </span>
               ))}
             </div>
@@ -133,50 +131,21 @@ export default function Hero() {
             {/* CTA */}
             <div className="hero-cta">
               <Link to="/courses" className="btn-primary-custom hero-btn-main">
-                Explore Courses
+                Explore Our Programs
                 <ArrowRight size={18} />
               </Link>
-              <button
-                className="hero-play-btn"
-                onClick={() => setVideoOpen(true)}
-              >
-                <span className="play-icon">
-                  <Play size={18} fill="currentColor" />
-                </span>
-                <span>
-                  <span className="play-label">Watch Demo</span>
-                  <span className="play-sub">2 min overview</span>
-                </span>
-              </button>
+              <Link to="/register" className="btn-outline-custom hero-btn-main">
+                Book Your Free Trial, Now
+              </Link>
             </div>
 
-            {/* Social Proof */}
-            <div className="hero-social-proof">
-              <div className="avatar-stack">
-                {[
-                  'https://i.pravatar.cc/40?img=1',
-                  'https://i.pravatar.cc/40?img=2',
-                  'https://i.pravatar.cc/40?img=3',
-                  'https://i.pravatar.cc/40?img=4',
-                ].map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Student ${i + 1}`}
-                    className="avatar-item"
-                    style={{ zIndex: 4 - i }}
-                  />
+            {/* Partners */}
+            <div className="hero-partners">
+              <span className="partners-label">Our Learners Work At</span>
+              <div className="partners-list">
+                {partners.map((p) => (
+                  <span key={p} className="partner-chip">{p}</span>
                 ))}
-              </div>
-              <div className="social-proof-text">
-                <div className="social-proof-stars">
-                  {Array(5).fill(0).map((_, i) => (
-                    <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />
-                  ))}
-                </div>
-                <span>
-                  <strong>4.9/5</strong> from 12,000+ reviews
-                </span>
               </div>
             </div>
           </motion.div>
@@ -191,7 +160,7 @@ export default function Hero() {
             <div className="hero-image-wrapper">
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=500&fit=crop&auto=format"
-                alt="Students learning together"
+                alt="Students learning at TechVedhu"
                 className="hero-image"
               />
               <div className="hero-image-overlay" />
@@ -215,26 +184,10 @@ export default function Hero() {
                 </motion.div>
               ))}
 
-              {/* Progress Ring */}
-              <div className="hero-progress-ring">
-                <svg width="64" height="64" viewBox="0 0 64 64">
-                  <circle cx="32" cy="32" r="28" fill="none" stroke="#E2E8F0" strokeWidth="5" />
-                  <circle
-                    cx="32" cy="32" r="28"
-                    fill="none" stroke="url(#grad)" strokeWidth="5"
-                    strokeLinecap="round"
-                    strokeDasharray={`${2 * Math.PI * 28 * 0.78} ${2 * Math.PI * 28}`}
-                    transform="rotate(-90 32 32)"
-                  />
-                  <defs>
-                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#4F46E5" />
-                      <stop offset="100%" stopColor="#7C3AED" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <span className="progress-ring-text">78%</span>
-                <span className="progress-ring-label">Complete</span>
+              {/* Live Learners Badge */}
+              <div className="hero-live-badge">
+                <span className="live-dot" />
+                <span><strong>10.7K+</strong> Registered · <strong>10+</strong> Languages</span>
               </div>
             </div>
           </motion.div>
@@ -269,8 +222,8 @@ export default function Hero() {
           >
             <div className="video-modal-placeholder">
               <Play size={48} className="text-white" />
-              <p className="text-white mt-3 fs-5">Platform Demo Video</p>
-              <p className="text-white opacity-75">Coming Soon</p>
+              <p className="text-white mt-3 fs-5">TechVedhu Platform Demo</p>
+              <p className="text-white opacity-75">Book a free trial to see it live</p>
             </div>
             <button className="video-modal-close" onClick={() => setVideoOpen(false)}>✕</button>
           </motion.div>

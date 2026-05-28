@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import CoursesPage from './pages/CoursesPage';
 import InternshipsPage from './pages/InternshipsPage';
+import InternshipDetailsPage from './pages/InternshipDetailsPage';
 import BlogPage from './pages/BlogPage';
 import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
@@ -68,6 +69,14 @@ export default function App() {
             element={
               <Layout>
                 <CoursesPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/courses/:id"
+            element={
+              <Layout>
+                <InternshipDetailsPage />
               </Layout>
             }
           />

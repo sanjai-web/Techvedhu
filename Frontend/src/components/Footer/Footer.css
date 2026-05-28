@@ -1,5 +1,31 @@
 /* ===== Footer ===== */
 
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background: #128C7E;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
 /* Newsletter */
 .footer-newsletter {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);

@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
 import './CTASection.css';
+
+const benefits = [
+  'No credit card required',
+  'Free demo session available',
+  'Assured scholarships on enrollment',
+  'Placement guaranteed',
+];
 
 export default function CTASection() {
   return (
@@ -23,28 +30,50 @@ export default function CTASection() {
           <div className="cta-inner">
             <div className="cta-badge">
               <Sparkles size={16} />
-              Limited Time Offer — 75% OFF
+              Work-Experience Based Learning · 10,700+ Learners
             </div>
+
             <h2 className="cta-title">
-              Ready to Launch Your<br />
-              Tech Career?
+              Supercharge Your Career<br />
+              Right Away
             </h2>
+
             <p className="cta-subtitle">
-              Join 50,000+ learners who have already transformed their careers.
-              Your dream job is just one course away. Start today with a 7-day free trial.
+              Work-experience-based learning personalized programs to land your
+              dream tech job at the best companies in India. Start with a
+              free trial — no commitment needed.
             </p>
+
+            {/* Benefits Row */}
+            <div className="cta-benefits">
+              {benefits.map((b) => (
+                <span key={b} className="cta-benefit-item">
+                  <CheckCircle size={14} />
+                  {b}
+                </span>
+              ))}
+            </div>
+
             <div className="cta-actions">
-              <Link to="/courses" className="btn-white-custom">
-                Browse Free Courses
+              <a
+                href="https://wa.me/919363603504"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-white-custom"
+              >
+                Book Your Free Trial, Now
                 <ArrowRight size={18} />
-              </Link>
-              <Link to="/register" className="cta-secondary-btn">
-                Start Free Trial
+              </a>
+              <Link to="/courses" className="cta-secondary-btn">
+                Explore Our Programs
                 <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="cta-note">
-              ✓ No credit card required &nbsp;&nbsp; ✓ Cancel anytime &nbsp;&nbsp; ✓ 30-day money back guarantee
+
+            <div className="cta-contact">
+              <span>📞 Call us: <a href="tel:+919363630504" className="cta-contact-link">+91 93636 30504</a></span>
+              <span className="cta-contact-divider">|</span>
+              <span>✉️ <a href="mailto:support@techvedhu.com" className="cta-contact-link">support@techvedhu.com</a></span>
             </div>
           </div>
         </motion.div>

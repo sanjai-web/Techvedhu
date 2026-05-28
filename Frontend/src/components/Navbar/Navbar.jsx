@@ -2,35 +2,46 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  BookOpen, ChevronDown, Search, Bell, Menu, X,
-  Laptop, Code2, Brain, Award, Users, Briefcase,
-  GraduationCap, BarChart3, Globe, Zap
+  BookOpen, ChevronDown, Search, Menu, X,
+  Code2, Brain, TrendingUp, Palette, Shield,
+  Globe, Monitor, ShoppingBag, Rocket, BarChart3, Zap
 } from 'lucide-react';
 import './Navbar.css';
 
-const courseCategories = [
-  { icon: <Code2 size={18} />, title: 'Web Development', count: '42 Courses', color: '#4F46E5' },
-  { icon: <Brain size={18} />, title: 'AI & Machine Learning', count: '28 Courses', color: '#7C3AED' },
-  { icon: <Laptop size={18} />, title: 'Mobile Development', count: '19 Courses', color: '#0EA5E9' },
-  { icon: <BarChart3 size={18} />, title: 'Data Science', count: '31 Courses', color: '#10B981' },
-  { icon: <Globe size={18} />, title: 'Cloud Computing', count: '16 Courses', color: '#F59E0B' },
-  { icon: <Zap size={18} />, title: 'Cybersecurity', count: '12 Courses', color: '#EF4444' },
+// ─── REAL TechVedhu.com navigation structure ─────────────────────────────────
+const internshipPrograms = [
+  { icon: <Code2 size={17} />, title: 'Web Development', color: '#4F46E5', slug: 'web-development' },
+  { icon: <Brain size={17} />, title: 'Machine Learning', color: '#7C3AED', slug: 'machine-learning' },
+  { icon: <Code2 size={17} />, title: 'Python Programming', color: '#0EA5E9', slug: 'python' },
+  { icon: <Palette size={17} />, title: 'UI/UX Design', color: '#F59E0B', slug: 'ui-ux-design' },
+  { icon: <ShoppingBag size={17} />, title: 'Sales & Marketing', color: '#10B981', slug: 'sales-marketing' },
+  { icon: <Shield size={17} />, title: 'Cyber Security', color: '#EF4444', slug: 'cyber-security' },
+  { icon: <Globe size={17} />, title: 'Cloud Computing', color: '#0EA5E9', slug: 'cloud-computing' },
+  { icon: <Monitor size={17} />, title: 'App Development', color: '#7C3AED', slug: 'app-development' },
+  { icon: <TrendingUp size={17} />, title: 'Data Science', color: '#10B981', slug: 'data-science' },
+  { icon: <TrendingUp size={17} />, title: 'Digital Marketing', color: '#F59E0B', slug: 'digital-marketing' },
+  { icon: <Code2 size={17} />, title: 'Java Programming', color: '#EF4444', slug: 'java' },
+  { icon: <Brain size={17} />, title: 'Artificial Intelligence', color: '#4F46E5', slug: 'ai' },
+];
+
+const launchpadPrograms = [
+  { icon: <Rocket size={17} />, title: 'Software Dev Launchpad (FSD + Gen AI)', subtitle: '4–8 months · Placement Guaranteed', color: '#4F46E5' },
+  { icon: <BarChart3 size={17} />, title: 'Data Analysis & Data Science (DADS)', subtitle: '4–8 months · Placement Guaranteed', color: '#10B981' },
+  { icon: <Zap size={17} />, title: 'FinTech & Digital Finance + Gen AI', subtitle: '4–8 months · Placement Guaranteed', color: '#F59E0B' },
 ];
 
 const navLinks = [
   { label: 'Home', path: '/' },
-  {
-    label: 'Courses', path: '/courses', hasDropdown: true,
-  },
-  { label: 'Internships', path: '/internships' },
-  { label: 'Blog', path: '/blog' },
+  { label: 'Internship Program', path: '/courses', hasDropdown: true, dropdownType: 'internship' },
+  { label: 'Career Launchpad', path: '/courses', hasDropdown: true, dropdownType: 'launchpad' },
   { label: 'About', path: '/about' },
+  { label: 'Blog', path: '/blog' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchRef = useRef(null);
@@ -44,7 +55,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setDropdownOpen(false);
+    setActiveDropdown(null);
   }, [location]);
 
   useEffect(() => {
@@ -61,7 +72,7 @@ export default function Navbar() {
       <nav className={`navbar-custom ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <div className="navbar-inner">
-            {/* Logo */}
+            {/* Logo — real TechVedhu branding */}
             <Link to="/" className="navbar-logo">
               <div className="logo-icon">
                 <BookOpen size={20} strokeWidth={2.5} />
@@ -78,39 +89,64 @@ export default function Navbar() {
                   <div
                     key={link.label}
                     className="nav-dropdown-wrapper"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
+                    onMouseEnter={() => setActiveDropdown(link.dropdownType)}
+                    onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <button className="nav-link-btn">
                       {link.label}
-                      <ChevronDown size={14} className={`dropdown-arrow ${dropdownOpen ? 'open' : ''}`} />
+                      <ChevronDown
+                        size={14}
+                        className={`dropdown-arrow ${activeDropdown === link.dropdownType ? 'open' : ''}`}
+                      />
                     </button>
+
                     <AnimatePresence>
-                      {dropdownOpen && (
+                      {activeDropdown === link.dropdownType && (
                         <motion.div
-                          className="nav-dropdown"
+                          className={`nav-dropdown ${link.dropdownType === 'launchpad' ? 'nav-dropdown-narrow' : ''}`}
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.18 }}
                         >
-                          <div className="dropdown-header">
-                            <span>Browse by Category</span>
-                            <Link to="/courses" className="dropdown-view-all">View All →</Link>
-                          </div>
-                          <div className="dropdown-grid">
-                            {courseCategories.map((cat) => (
-                              <Link key={cat.title} to="/courses" className="dropdown-item">
-                                <span className="dropdown-item-icon" style={{ color: cat.color, background: `${cat.color}15` }}>
-                                  {cat.icon}
-                                </span>
-                                <div>
-                                  <div className="dropdown-item-title">{cat.title}</div>
-                                  <div className="dropdown-item-count">{cat.count}</div>
-                                </div>
-                              </Link>
-                            ))}
-                          </div>
+                          {link.dropdownType === 'internship' ? (
+                            <>
+                              <div className="dropdown-header">
+                                <span>Internship / Certificate Programs</span>
+                                <Link to="/courses" className="dropdown-view-all">View All →</Link>
+                              </div>
+                              <div className="dropdown-grid">
+                                {internshipPrograms.map((p) => (
+                                  <Link key={p.title} to={`/courses/${p.slug}`} className="dropdown-item">
+                                    <span className="dropdown-item-icon" style={{ color: p.color, background: `${p.color}15` }}>
+                                      {p.icon}
+                                    </span>
+                                    <div className="dropdown-item-title">{p.title}</div>
+                                  </Link>
+                                ))}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="dropdown-header">
+                                <span>Career Launchpad Programs</span>
+                                <Link to="/courses" className="dropdown-view-all">View All →</Link>
+                              </div>
+                              <div className="dropdown-list">
+                                {launchpadPrograms.map((p) => (
+                                  <Link key={p.title} to="/courses" className="dropdown-item-wide">
+                                    <span className="dropdown-item-icon" style={{ color: p.color, background: `${p.color}15` }}>
+                                      {p.icon}
+                                    </span>
+                                    <div>
+                                      <div className="dropdown-item-title">{p.title}</div>
+                                      <div className="dropdown-item-count">{p.subtitle}</div>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
+                            </>
+                          )}
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -136,11 +172,11 @@ export default function Navbar() {
                     <motion.input
                       ref={searchRef}
                       className="search-input"
-                      placeholder="Search courses, topics..."
+                      placeholder="Search programs..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       initial={{ width: 0, opacity: 0 }}
-                      animate={{ width: 220, opacity: 1 }}
+                      animate={{ width: 200, opacity: 1 }}
                       exit={{ width: 0, opacity: 0 }}
                       transition={{ duration: 0.25 }}
                       onBlur={() => { setSearchOpen(false); setSearchQuery(''); }}
@@ -157,17 +193,18 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* Notification */}
-              <button className="icon-btn tooltip-custom" data-tooltip="Notifications">
-                <Bell size={18} />
-                <span className="notification-dot" />
-              </button>
-
-              <Link to="/login" className="btn-outline-custom" style={{ padding: '8px 18px', fontSize: '14px' }}>
-                Log In
-              </Link>
+              {/* Real TechVedhu CTA buttons */}
+              <a
+                href="https://wa.me/919363603504"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline-custom"
+                style={{ padding: '8px 18px', fontSize: '14px' }}
+              >
+                Free Trial
+              </a>
               <Link to="/register" className="btn-primary-custom" style={{ padding: '8px 18px', fontSize: '14px' }}>
-                Get Started
+                Login / Signup
               </Link>
             </div>
 
@@ -215,7 +252,7 @@ export default function Navbar() {
                 <Search size={16} className="mobile-search-icon" />
                 <input
                   className="mobile-search-input"
-                  placeholder="Search courses..."
+                  placeholder="Search programs..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -238,15 +275,34 @@ export default function Navbar() {
                     </NavLink>
                   </motion.div>
                 ))}
+                <div className="mobile-extra-links">
+                  <a href="/become-instructor" className="mobile-nav-link">Become an Instructor</a>
+                  <a href="/hire-from-us" className="mobile-nav-link">Hire From Us</a>
+                </div>
               </nav>
 
               <div className="mobile-cta">
-                <Link to="/login" className="btn-outline-custom w-100 justify-content-center" onClick={() => setMobileOpen(false)}>
-                  Log In
+                <a
+                  href="https://wa.me/919363603504"
+                  className="btn-outline-custom w-100 justify-content-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book Free Trial
+                </a>
+                <Link
+                  to="/register"
+                  className="btn-primary-custom w-100 justify-content-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Login / Signup
                 </Link>
-                <Link to="/register" className="btn-primary-custom w-100 justify-content-center" onClick={() => setMobileOpen(false)}>
-                  Get Started Free
-                </Link>
+              </div>
+
+              {/* Contact in Mobile */}
+              <div className="mobile-contact">
+                <a href="tel:+919363630504">📞 +91 93636 30504</a>
+                <a href="mailto:support@techvedhu.com">✉️ support@techvedhu.com</a>
               </div>
             </motion.div>
           </>

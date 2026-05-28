@@ -3,13 +3,42 @@ import { motion } from 'framer-motion';
 import { Users, BookOpen, Award, Globe, TrendingUp, Star } from 'lucide-react';
 import './StatsSection.css';
 
+// ─── REAL stats from TechVedhu.com ──────────────────────────────────────────
 const stats = [
-  { icon: <Users size={28} />, value: 50000, suffix: '+', label: 'Active Learners', color: '#4F46E5' },
-  { icon: <BookOpen size={28} />, value: 200, suffix: '+', label: 'Expert Courses', color: '#7C3AED' },
-  { icon: <Award size={28} />, value: 95, suffix: '%', label: 'Placement Rate', color: '#10B981' },
-  { icon: <Globe size={28} />, value: 48, suffix: '+', label: 'Countries Reached', color: '#F59E0B' },
-  { icon: <TrendingUp size={28} />, value: 3.5, suffix: 'x', label: 'Avg Salary Hike', color: '#0EA5E9' },
-  { icon: <Star size={28} />, value: 4.9, suffix: '/5', label: 'Student Rating', color: '#EF4444' },
+  { icon: <BookOpen size={28} />, value: 1000, suffix: '+', label: 'Learning Hours', color: '#4F46E5' },
+  { icon: <Users size={28} />, value: 10700, suffix: '+', label: 'Registered Learners', color: '#7C3AED' },
+  { icon: <TrendingUp size={28} />, value: 50, suffix: '%', label: 'Average Salary Hike', color: '#10B981' },
+  { icon: <Award size={28} />, value: 100, suffix: '+', label: 'Hiring Partners', color: '#F59E0B' },
+  { icon: <Globe size={28} />, value: 10, suffix: '+', label: 'Languages Supported', color: '#0EA5E9' },
+  { icon: <Star size={28} />, value: 92, suffix: '%', label: 'Positive Impact on Productivity', color: '#EF4444' },
+];
+
+// ─── Companies where TechVedhu learners work ───────────────────────────────
+const partners = [
+  {
+    name: 'Accenture',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/120px-Accenture.svg.png',
+  },
+  {
+    name: 'Zoho',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Zoho_Corporation_Logo.png/120px-Zoho_Corporation_Logo.png',
+  },
+  {
+    name: 'Microsoft',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png',
+  },
+  {
+    name: 'Amazon',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/120px-Amazon_logo.svg.png',
+  },
+  {
+    name: 'Walmart',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Walmart_Spark.svg/120px-Walmart_Spark.svg.png',
+  },
+  {
+    name: 'Cognizant',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Cognizant_logo_2022.svg/120px-Cognizant_logo_2022.svg.png',
+  },
 ];
 
 function CountUp({ target, suffix, start }) {
@@ -34,9 +63,9 @@ function CountUp({ target, suffix, start }) {
     return () => clearInterval(timer);
   }, [start, target]);
 
-  return (
-    <span>{count}{suffix}</span>
-  );
+  const display = count >= 1000 ? `${(count / 1000).toFixed(1)}K` : count;
+
+  return <span>{display}{suffix}</span>;
 }
 
 function StatCard({ stat, index }) {
@@ -72,26 +101,21 @@ function StatCard({ stat, index }) {
   );
 }
 
-const partners = [
-  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/120px-Google_2015_logo.svg.png' },
-  { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png' },
-  { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/120px-Amazon_logo.svg.png' },
-  { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/120px-IBM_logo.svg.png' },
-  { name: 'Meta', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/120px-Meta_Platforms_Inc._logo.svg.png' },
-  { name: 'Infosys', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Infosys_logo.svg/120px-Infosys_logo.svg.png' },
-];
-
 export default function StatsSection() {
   return (
     <section className="stats-section section-padding bg-surface">
       <div className="container">
-        {/* Stats */}
+        {/* Header */}
         <div className="text-center mb-5">
           <p className="section-label">Our Impact</p>
           <h2 className="section-title">
             Numbers That{' '}
             <span className="text-gradient">Tell Our Story</span>
           </h2>
+          <p className="section-subtitle mx-auto">
+            Real outcomes from real learners — 92% report a positive impact
+            on their career productivity after joining TechVedhu.
+          </p>
         </div>
 
         <div className="stats-grid">
@@ -102,12 +126,23 @@ export default function StatsSection() {
 
         {/* Partners */}
         <div className="partners-section mt-5">
-          <p className="partners-label">Trusted by learners from top companies</p>
+          <p className="partners-label">Our Learners Work At</p>
           <div className="partners-track-wrapper">
             <div className="partners-track">
               {[...partners, ...partners].map((p, i) => (
                 <div key={i} className="partner-item">
-                  <img src={p.logo} alt={p.name} className="partner-logo" />
+                  <img
+                    src={p.logo}
+                    alt={p.name}
+                    className="partner-logo"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'block';
+                    }}
+                  />
+                  <span className="partner-text-fallback" style={{ display: 'none' }}>
+                    {p.name}
+                  </span>
                 </div>
               ))}
             </div>

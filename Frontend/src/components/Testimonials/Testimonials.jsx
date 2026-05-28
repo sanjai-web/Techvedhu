@@ -3,55 +3,57 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import './Testimonials.css';
 
+// ─── REAL testimonials from TechVedhu.com (Google Reviews 4.8/5) ─────────────
 const testimonials = [
   {
     id: 1,
-    name: 'Arjun Mehta',
-    role: 'Full Stack Developer',
-    company: 'Flipkart',
+    name: 'M Thanvik Suriya',
+    role: 'Cyber Security Student',
+    company: 'TechVedhu',
     avatar: 'https://i.pravatar.cc/80?img=11',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/NowFloats_Boost_logo.png/120px-NowFloats_Boost_logo.png',
     rating: 5,
-    text: 'TechVedhu completely transformed my career trajectory. Within 6 months of completing the Full Stack Development course, I landed a ₹18 LPA package at Flipkart. The mentorship and live projects were absolutely invaluable.',
-    course: 'Full Stack Web Development',
-    salaryBefore: '₹4 LPA',
-    salaryAfter: '₹18 LPA',
+    text: 'I really enjoyed the practical assignments. Learning about cybersecurity threats, defense mechanisms, and security audits was eye-opening and extremely useful. The hands-on approach made complex topics very easy to understand.',
+    course: 'Cyber Security Program',
   },
   {
     id: 2,
-    name: 'Priya Subramaniam',
-    role: 'Data Scientist',
-    company: 'Wipro Technologies',
+    name: 'M. Kavin',
+    role: 'Cyber Security Graduate',
+    company: 'TechVedhu',
     avatar: 'https://i.pravatar.cc/80?img=5',
     rating: 5,
-    text: 'The Data Science course curriculum at TechVedhu is miles ahead of any other platform. Real datasets, real problems, and an incredible community. I went from a non-tech background to being a professional data scientist in just 8 months!',
-    course: 'Data Science & Analytics',
-    salaryBefore: '₹3.5 LPA',
-    salaryAfter: '₹14 LPA',
+    text: 'I had no prior knowledge of cybersecurity, but after this course, I can confidently identify vulnerabilities, secure networks, and understand ethical hacking techniques! The structured curriculum and expert guidance made all the difference.',
+    course: 'Cyber Security Program',
   },
   {
     id: 3,
-    name: 'Rahul Gupta',
-    role: 'Cloud Solutions Architect',
-    company: 'TCS Digital',
+    name: 'Veerappan K',
+    role: 'Cyber Security Engineer',
+    company: 'TechVedhu',
     avatar: 'https://i.pravatar.cc/80?img=33',
     rating: 5,
-    text: 'Got my AWS certification and doubled my salary! The instructors at TechVedhu are not just teachers — they are active industry practitioners who know exactly what the job market demands.',
-    course: 'AWS Cloud Practitioner',
-    salaryBefore: '₹6 LPA',
-    salaryAfter: '₹15 LPA',
+    text: "Tech Vedhu's Cyber Security course was a game-changer! The hands-on labs and real-world scenarios helped me understand how to prevent cyber threats effectively. I feel fully prepared for real industry challenges.",
+    course: 'Cyber Security Program',
   },
   {
     id: 4,
-    name: 'Sneha Iyer',
-    role: 'AI/ML Engineer',
-    company: 'Zoho Corporation',
+    name: 'Ruban Kumar M',
+    role: 'Network Security Specialist',
+    company: 'TechVedhu',
     avatar: 'https://i.pravatar.cc/80?img=20',
     rating: 5,
-    text: 'From a mechanical engineering student to an AI engineer — TechVedhu made this dream a reality. The AI & ML curriculum is cutting-edge and the placement support is unmatched.',
-    course: 'Machine Learning & AI',
-    salaryBefore: '₹3 LPA',
-    salaryAfter: '₹16 LPA',
+    text: 'This Cyber Security course at Tech Vedhu was fantastic! The combination of theory and hands-on practice helped me understand the intricacies of network security. The 1-1 assistance from mentors was invaluable throughout.',
+    course: 'Cyber Security Program',
+  },
+  {
+    id: 5,
+    name: 'Monish K',
+    role: 'Cyber Security Analyst',
+    company: 'TechVedhu',
+    avatar: 'https://i.pravatar.cc/80?img=67',
+    rating: 5,
+    text: 'The best part was working on real-world cybersecurity projects. The case studies and live demonstrations made the learning experience truly immersive. TechVedhu\'s work-experience-based model is unlike anything else.',
+    course: 'Cyber Security Program',
   },
 ];
 
@@ -75,16 +77,26 @@ export default function Testimonials() {
     <section className="testimonials-section section-padding">
       <div className="container">
         <div className="text-center mb-5">
-          <p className="section-label">Student Success Stories</p>
+          <p className="section-label">Student Reviews</p>
           <h2 className="section-title">
-            Real People.{' '}
-            <span className="text-gradient">Real Results.</span>
+            What Our Learners{' '}
+            <span className="text-gradient">Say About Us</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Join thousands of professionals who transformed their careers
-            through TechVedhu's industry-aligned programs.
+            Rated <strong>4.8 / 5</strong> on Google Reviews by learners across India.
+            Real stories from students who transformed their careers with TechVedhu.
           </p>
           <div className="divider mx-auto" />
+          {/* Google Rating Banner */}
+          <div className="google-rating-banner">
+            <div className="google-rating-stars">
+              {Array(5).fill(0).map((_, i) => (
+                <Star key={i} size={20} fill="#F59E0B" color="#F59E0B" />
+              ))}
+            </div>
+            <span className="google-rating-score">4.8 / 5</span>
+            <span className="google-rating-label">Google Reviews</span>
+          </div>
         </div>
 
         <div className="testimonial-wrapper">
@@ -116,7 +128,7 @@ export default function Testimonials() {
 
                   {/* Course Badge */}
                   <div className="testimonial-course">
-                    Course: <strong>{t.course}</strong>
+                    Program: <strong>{t.course}</strong>
                   </div>
                 </div>
 
@@ -127,23 +139,22 @@ export default function Testimonials() {
                     <div>
                       <div className="testimonial-name">{t.name}</div>
                       <div className="testimonial-role">{t.role}</div>
-                      <div className="testimonial-company">{t.company}</div>
+                      <div className="testimonial-company">TechVedhu Graduate</div>
                     </div>
                   </div>
 
-                  {/* Salary Growth */}
+                  {/* TechVedhu Promise Card */}
                   <div className="salary-card">
-                    <div className="salary-label">Career Growth</div>
-                    <div className="salary-row">
-                      <div className="salary-before">
-                        <span className="salary-tag">Before</span>
-                        <span className="salary-value">{t.salaryBefore}</span>
-                      </div>
-                      <div className="salary-arrow">→</div>
-                      <div className="salary-after">
-                        <span className="salary-tag after">After</span>
-                        <span className="salary-value after">{t.salaryAfter}</span>
-                      </div>
+                    <div className="salary-label">TechVedhu Promise</div>
+                    <div className="promise-list">
+                      {[
+                        '✓ Live Interactive Classes',
+                        '✓ Real-World Projects',
+                        '✓ 1-1 Mentorship',
+                        '✓ Placement Guaranteed',
+                      ].map((item) => (
+                        <div key={item} className="promise-item">{item}</div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -184,7 +195,7 @@ export default function Testimonials() {
               <img src={t.avatar} alt={t.name} />
               <div>
                 <div className="thumb-name">{t.name}</div>
-                <div className="thumb-company">{t.company}</div>
+                <div className="thumb-company">{t.course}</div>
               </div>
             </div>
           ))}

@@ -122,6 +122,51 @@
   font-weight: 500;
 }
 
+/* Benefits row */
+.cta-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.cta-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+.cta-benefit-item svg { color: #86EFAC; }
+
+/* Contact line */
+.cta-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 20px;
+}
+
+.cta-contact-link {
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cta-contact-link:hover { color: white; text-decoration: underline; }
+
+.cta-contact-divider {
+  color: rgba(255,255,255,0.3);
+}
+
+
 @media (max-width: 640px) {
   .cta-card { padding: 48px 24px; }
   .cta-actions { flex-direction: column; width: 100%; }

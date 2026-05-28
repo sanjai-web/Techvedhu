@@ -46,6 +46,72 @@
   margin: 0;
 }
 
+/* Program Types */
+.program-types {}
+
+.program-types-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.program-type-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.program-type-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.program-type-icon {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.program-type-title {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0;
+  font-family: var(--font-display);
+}
+
+.program-type-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.program-type-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1.5px solid;
+  border-radius: var(--radius-md);
+  align-self: flex-start;
+  transition: all var(--transition-fast);
+  background: transparent;
+}
+
+.program-type-cta:hover {
+  transform: translateX(4px);
+}
+
 /* Split */
 .features-split {
   display: grid;

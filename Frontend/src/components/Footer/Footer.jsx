@@ -1,42 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
-  BookOpen, Twitter, Linkedin, Github, Youtube, Instagram,
-  Mail, Phone, MapPin, ArrowRight, ExternalLink,
+  BookOpen, Twitter, Linkedin, Youtube, Instagram,
+  Mail, Phone, MapPin, ArrowRight, MessageCircle,
   Shield, Award, Globe
 } from 'lucide-react';
 import './Footer.css';
 
+// ─── REAL TechVedhu.com footer content ───────────────────────────────────────
 const footerLinks = {
-  Learning: [
-    { label: 'Browse Courses', to: '/courses' },
-    { label: 'Internships', to: '/internships' },
-    { label: 'Career Paths', to: '/careers' },
-    { label: 'Certifications', to: '/certifications' },
-    { label: 'Free Resources', to: '/resources' },
-    { label: 'Blog', to: '/blog' },
+  'Career Programs': [
+    { label: 'Internship / Certificate Program', to: '/courses' },
+    { label: 'Career Launchpad — FSD + Gen AI', to: '/courses' },
+    { label: 'Data Analysis & Data Science', to: '/courses' },
+    { label: 'FinTech & Digital Finance', to: '/courses' },
+    { label: 'Placement Guaranteed Program', to: '/courses' },
+    { label: 'Become an Instructor', to: '/become-instructor' },
   ],
-  Company: [
+  'TechVedhu': [
     { label: 'About Us', to: '/about' },
-    { label: 'Careers', to: '/careers' },
-    { label: 'Press & Media', to: '/press' },
-    { label: 'Partner With Us', to: '/partner' },
-    { label: 'Become an Instructor', to: '/teach' },
-  ],
-  Support: [
-    { label: 'Help Center', to: '/help' },
-    { label: 'Contact Us', to: '/contact' },
-    { label: 'Community Forum', to: '/community' },
-    { label: 'Student Reviews', to: '/reviews' },
-    { label: 'Report an Issue', to: '/report' },
-  ],
-  Legal: [
+    { label: 'Success Stories', to: '/blog' },
+    { label: 'Hire From Us', to: '/hire-from-us' },
+    { label: 'Blog & Insights', to: '/blog' },
+    { label: 'Terms & Conditions', to: '/terms' },
     { label: 'Privacy Policy', to: '/privacy' },
-    { label: 'Terms of Service', to: '/terms' },
-    { label: 'Cookie Policy', to: '/cookies' },
-    { label: 'Refund Policy', to: '/refund' },
-    { label: 'Accessibility', to: '/accessibility' },
+  ],
+  'Programs': [
+    { label: 'Web Development', to: '/courses' },
+    { label: 'Machine Learning', to: '/courses' },
+    { label: 'Python Programming', to: '/courses' },
+    { label: 'UI/UX Design', to: '/courses' },
+    { label: 'Cyber Security', to: '/courses' },
+    { label: 'Data Science', to: '/courses' },
+  ],
+  'More Programs': [
+    { label: 'Cloud Computing', to: '/courses' },
+    { label: 'App Development', to: '/courses' },
+    { label: 'Digital Marketing', to: '/courses' },
+    { label: 'Java Programming', to: '/courses' },
+    { label: 'Artificial Intelligence', to: '/courses' },
+    { label: 'Sales & Marketing', to: '/courses' },
   ],
 };
 
@@ -45,29 +48,31 @@ const socials = [
   { icon: <Linkedin size={18} />, label: 'LinkedIn', href: '#' },
   { icon: <Youtube size={18} />, label: 'YouTube', href: '#' },
   { icon: <Instagram size={18} />, label: 'Instagram', href: '#' },
-  { icon: <Github size={18} />, label: 'GitHub', href: '#' },
 ];
 
 const trustBadges = [
   { icon: <Shield size={16} />, label: 'SSL Secured' },
-  { icon: <Award size={16} />, label: 'ISO Certified' },
-  { icon: <Globe size={16} />, label: 'NASSCOM Member' },
+  { icon: <Award size={16} />, label: '4.8 Google Rating' },
+  { icon: <Globe size={16} />, label: '10+ Languages' },
 ];
 
 export default function Footer() {
   return (
     <footer className="footer">
-      {/* Newsletter Banner */}
+      {/* Newsletter / CTA Banner */}
       <div className="footer-newsletter">
         <div className="container">
           <div className="newsletter-inner">
             <div className="newsletter-content">
               <h3 className="newsletter-title">
-                🚀 Start Learning Today — Get{' '}
-                <span className="text-gradient">₹2,000 Off</span> Your First Course
+                🚀 Start Your Tech Journey —{' '}
+                <span className="text-gradient" style={{ WebkitTextFillColor: 'unset', color: '#A5B4FC' }}>
+                  Book a Free Trial Today
+                </span>
               </h3>
               <p className="newsletter-subtitle">
-                Join 50,000+ learners. Get weekly insights, course updates, and exclusive offers.
+                Join 10,700+ learners mastering in-demand tech skills with live mentorship,
+                real projects, and 100+ hiring partners. No credit card required.
               </p>
             </div>
             <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
@@ -79,8 +84,8 @@ export default function Footer() {
                   className="newsletter-input"
                 />
               </div>
-              <button type="submit" className="btn-primary-custom">
-                Subscribe
+              <button type="submit" className="btn-primary-custom" style={{ background: 'white', color: 'var(--primary)' }}>
+                Book Free Trial
                 <ArrowRight size={16} />
               </button>
             </form>
@@ -104,22 +109,26 @@ export default function Footer() {
               </Link>
 
               <p className="footer-tagline">
-                Empowering India's next generation of tech leaders through
-                world-class, mentor-led education and hands-on learning.
+                Design amazing digital experiences that create more happy in the world.
+                Work-experience-based learning to supercharge your career.
               </p>
 
+              {/* Real Contact Info from TechVedhu.com */}
               <div className="footer-contact">
                 <div className="footer-contact-item">
                   <Mail size={15} />
-                  <a href="mailto:hello@techvedhu.com">hello@techvedhu.com</a>
+                  <a href="mailto:support@techvedhu.com">support@techvedhu.com</a>
                 </div>
                 <div className="footer-contact-item">
                   <Phone size={15} />
-                  <a href="tel:+919876543210">+91 98765 43210</a>
+                  <a href="tel:+919363630504">+91 93636 30504</a>
                 </div>
                 <div className="footer-contact-item">
                   <MapPin size={15} />
-                  <span>Chennai, Tamil Nadu, India</span>
+                  <span>
+                    7/257c Lakshmi Complex, Advaitha Ashram Road,
+                    Sinthampalayam, Fairlands, Salem — 636016, Tamil Nadu.
+                  </span>
                 </div>
               </div>
 
@@ -137,6 +146,17 @@ export default function Footer() {
                     {s.icon}
                   </a>
                 ))}
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/919363603504"
+                  className="social-link tooltip-custom"
+                  data-tooltip="WhatsApp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ background: 'rgba(37, 211, 102, 0.15)' }}
+                >
+                  <MessageCircle size={18} />
+                </a>
               </div>
             </div>
 
@@ -164,7 +184,7 @@ export default function Footer() {
         <div className="container">
           <div className="footer-bottom-inner">
             <p className="footer-copyright">
-              © {new Date().getFullYear()} TechVedhu. All rights reserved. Made with ❤️ in India.
+              © {new Date().getFullYear()} TechVedhu. All rights reserved. Made with ❤️ in Salem, Tamil Nadu.
             </p>
             <div className="footer-trust-badges">
               {trustBadges.map((b) => (
@@ -177,6 +197,17 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/919363603504"
+        className="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageCircle size={24} />
+      </a>
     </footer>
   );
 }

@@ -1,110 +1,244 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Target, Heart, Globe, ArrowRight } from 'lucide-react';
+import { Target, Heart, Globe, Users, ArrowRight, MapPin, Phone, Mail, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './CoursesPage.css';
 
-const team = [
-  { name: 'Karthik Rajan', role: 'CEO & Co-founder', avatar: 'https://i.pravatar.cc/80?img=11', desc: 'Ex-Google, IIT Madras. 12+ years in tech education.' },
-  { name: 'Divya Krishnan', role: 'CTO & Co-founder', avatar: 'https://i.pravatar.cc/80?img=9', desc: 'Ex-Microsoft, NIT grad. AI & Cloud architecture expert.' },
-  { name: 'Arjun Mehta', role: 'Head of Curriculum', avatar: 'https://i.pravatar.cc/80?img=33', desc: 'Former Lead Engineer at Amazon. Full-stack expert.' },
-  { name: 'Priya Subramaniam', role: 'Head of Placement', avatar: 'https://i.pravatar.cc/80?img=5', desc: '500+ placements in top MNCs. Career coaching expert.' },
+// Real TechVedhu.com "Why Choose Us" content
+const whyUs = [
+  { icon: '🎯', title: 'Live Interactive Class', desc: 'Learn in real-time with industry experts — not pre-recorded videos. Ask questions, collaborate, and grow.' },
+  { icon: '💼', title: 'Gain Working Experience', desc: 'Build professional projects alongside practitioners, mirroring real tech company environments.' },
+  { icon: '🤝', title: '1-1 Assistance', desc: 'Dedicated mentors guide you personally through every challenge in your learning journey.' },
+  { icon: '🧠', title: 'Expert Advice', desc: 'Learn directly from professionals who have worked at Accenture, Zoho, Microsoft, Amazon, and Walmart.' },
+  { icon: '📝', title: 'Mock Assessment', desc: 'Comprehensive mock tests, coding challenges, and interview simulations mirror real hiring processes.' },
+  { icon: '🏆', title: 'Placement Guaranteed', desc: 'Our 100+ hiring partner network ensures you land your dream tech role upon program completion.' },
 ];
 
-const values = [
-  { icon: <Target size={24} />, title: 'Mission-Driven', desc: 'Making quality tech education accessible to every aspiring learner in India.' },
-  { icon: <Heart size={24} />, title: 'Student-First', desc: 'Every decision we make is centered around our learners\' success and growth.' },
-  { icon: <Globe size={24} />, title: 'Industry-Aligned', desc: 'Curriculum built with hiring managers to ensure real-world relevance.' },
-  { icon: <Users size={24} />, title: 'Community-Led', desc: 'A thriving community of 50,000+ learners supporting each other\'s journey.' },
+// Real partner companies
+const companies = ['Accenture', 'Zoho', 'Microsoft', 'Amazon', 'Walmart', 'Cognizant'];
+
+const programHighlights = [
+  { label: '1000+', desc: 'Learning Hours' },
+  { label: '10.7K+', desc: 'Registered Learners' },
+  { label: '92%', desc: 'Positive Career Impact' },
+  { label: '50%', desc: 'Average Salary Hike' },
+  { label: '100+', desc: 'Hiring Partners' },
+  { label: '10+', desc: 'Languages Supported' },
 ];
 
 export default function AboutPage() {
   return (
     <div className="page-content">
+
       {/* Hero */}
       <div className="page-hero bg-surface">
         <div className="container text-center">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <p className="section-label">Our Story</p>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="section-label">About TechVedhu</p>
             <h1 className="section-title">
-              We're on a Mission to Make<br />
-              <span className="text-gradient">Tech Education Accessible</span>
+              Learn Just Like You Would Be in<br />
+              <span className="text-gradient">The Best Tech Companies in India</span>
             </h1>
             <p className="section-subtitle mx-auto">
-              TechVedhu was founded in 2020 in Chennai with a simple belief: every Indian learner
-              deserves access to world-class tech education that leads to real career outcomes.
+              Work-experience-based learning personalized programs to supercharge your
+              career and land your dream tech job at India's best tech companies.
             </p>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: 28 }}>
+              <Link to="/courses" className="btn-primary-custom">Explore Programs <ArrowRight size={16} /></Link>
+              <a href="https://wa.me/919363603504" target="_blank" rel="noopener noreferrer" className="btn-outline-custom">
+                Book Free Trial
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Values */}
+      {/* Mission Statement */}
       <section className="section-padding">
         <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="section-title">What We Stand For</h2>
-          </div>
-          <div className="row g-4">
-            {values.map((v, i) => (
-              <div key={v.title} className="col-md-6 col-lg-3">
-                <motion.div
-                  className="card-modern p-4 h-100"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <div className="feature-icon mb-3" style={{ background: 'var(--primary-light)', color: 'var(--primary)' }}>
-                    {v.icon}
-                  </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8 }}>{v.title}</h4>
-                  <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{v.desc}</p>
-                </motion.div>
-              </div>
-            ))}
+          <div className="about-mission-grid">
+            <motion.div
+              initial={{ opacity: 0, x: -32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className="section-label">Our Mission</p>
+              <h2 className="section-title">
+                Supercharge Your Career{' '}
+                <span className="text-gradient">Right Away</span>
+              </h2>
+              <p style={{ fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 24 }}>
+                TechVedhu is built on a single belief — every learner deserves access to the kind
+                of work experience that transforms their career. We're not just an ed-tech platform;
+                we're your career launchpad.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {[
+                  'Build professional projects with real professionals',
+                  'Master the current cutting-edge technologies',
+                  'Crack your dream role at the best tech companies',
+                  '100+ hiring partners actively sourcing from TechVedhu',
+                ].map((item) => (
+                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 15, color: 'var(--text-secondary)' }}>
+                    <CheckCircle size={16} style={{ color: 'var(--success)', flexShrink: 0 }} /> {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=560&h=400&fit=crop"
+                alt="TechVedhu Learning Environment"
+                style={{ width: '100%', height: 380, objectFit: 'cover', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-xl)' }}
+              />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Team */}
+      {/* Stats */}
       <section className="section-padding bg-surface">
         <div className="container">
           <div className="text-center mb-5">
-            <p className="section-label">Our Team</p>
-            <h2 className="section-title">
-              Meet the <span className="text-gradient">Builders</span>
-            </h2>
+            <p className="section-label">By The Numbers</p>
+            <h2 className="section-title">Our Impact at a Glance</h2>
           </div>
-          <div className="row g-4 justify-content-center">
-            {team.map((m, i) => (
-              <div key={m.name} className="col-sm-6 col-lg-3">
-                <motion.div
-                  className="card-modern p-4 text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <img src={m.avatar} alt={m.name} style={{ width: 72, height: 72, borderRadius: '50%', objectFit: 'cover', margin: '0 auto 12px', display: 'block', border: '3px solid var(--primary-light)' }} />
-                  <h4 style={{ fontSize: 15, fontWeight: 700, marginBottom: 4 }}>{m.name}</h4>
-                  <p style={{ fontSize: 12, color: 'var(--primary)', fontWeight: 600, marginBottom: 8 }}>{m.role}</p>
-                  <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>{m.desc}</p>
-                </motion.div>
-              </div>
+          <div className="about-stats-grid">
+            {programHighlights.map((s, i) => (
+              <motion.div
+                key={s.label}
+                className="about-stat-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+              >
+                <div className="about-stat-value">{s.label}</div>
+                <div className="about-stat-label">{s.desc}</div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Why Choose Us */}
       <section className="section-padding">
+        <div className="container">
+          <div className="text-center mb-5">
+            <p className="section-label">Why Choose TechVedhu</p>
+            <h2 className="section-title">
+              The TechVedhu{' '}
+              <span className="text-gradient">Difference</span>
+            </h2>
+          </div>
+          <div className="why-us-grid">
+            {whyUs.map((item, i) => (
+              <motion.div
+                key={item.title}
+                className="why-us-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+              >
+                <span className="why-us-icon">{item.icon}</span>
+                <h4 className="why-us-title">{item.title}</h4>
+                <p className="why-us-desc">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Learners Work At */}
+      <section className="section-padding bg-surface">
         <div className="container text-center">
-          <h2 className="section-title">Ready to Join 50,000+ Learners?</h2>
-          <p className="section-subtitle mx-auto mb-4">Start your free 7-day trial today. No credit card required.</p>
-          <Link to="/register" className="btn-primary-custom">
-            Get Started Free
-            <ArrowRight size={18} />
-          </Link>
+          <p className="section-label">Hiring Partners</p>
+          <h2 className="section-title">
+            Our Learners Work At{' '}
+            <span className="text-gradient">Top Companies</span>
+          </h2>
+          <p className="section-subtitle mx-auto mb-5">
+            100+ partner companies actively hiring TechVedhu graduates across India.
+          </p>
+          <div className="companies-row">
+            {companies.map((c) => (
+              <div key={c} className="company-name-chip">{c}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact / Address */}
+      <section className="section-padding">
+        <div className="container">
+          <div className="about-contact-grid">
+            <div>
+              <p className="section-label">Get In Touch</p>
+              <h2 className="section-title">
+                We're Here to{' '}
+                <span className="text-gradient">Help You</span>
+              </h2>
+              <p className="section-subtitle mb-4">
+                Have questions about our programs? Reach out to our team — we'll help
+                you choose the right learning path for your career goals.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {[
+                  { icon: <Phone size={18} />, label: 'Phone', value: '+91 93636 30504', href: 'tel:+919363630504' },
+                  { icon: <Mail size={18} />, label: 'Email', value: 'support@techvedhu.com', href: 'mailto:support@techvedhu.com' },
+                  { icon: <MapPin size={18} />, label: 'Corporate Office', value: '7/257c Lakshmi Complex, Advaitha Ashram Road, Sinthampalayam, Balaji Nagar, Fairlands, Salem — 636016, Tamil Nadu, India.', href: null },
+                ].map((item) => (
+                  <div key={item.label} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                    <div style={{ width: 40, height: 40, background: 'var(--primary-light)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', flexShrink: 0 }}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 2 }}>{item.label}</div>
+                      {item.href ? (
+                        <a href={item.href} style={{ fontSize: 15, fontWeight: 600, color: 'var(--primary)', textDecoration: 'none' }}>{item.value}</a>
+                      ) : (
+                        <p style={{ fontSize: 14, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>{item.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Inquiry Form */}
+            <div className="about-form-card">
+              <h3 style={{ fontSize: 20, fontWeight: 800, marginBottom: 20 }}>Send a Quick Message</h3>
+              <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                <input type="text" className="form-control-modern" placeholder="Your Full Name" required />
+                <input type="email" className="form-control-modern" placeholder="Email Address" required />
+                <input type="tel" className="form-control-modern" placeholder="Phone Number" />
+                <select className="form-control-modern">
+                  <option value="">Select a Program</option>
+                  <option>Web Development</option>
+                  <option>Machine Learning</option>
+                  <option>Data Science</option>
+                  <option>Career Launchpad (FSD)</option>
+                  <option>Career Launchpad (DADS)</option>
+                  <option>FinTech & Digital Finance</option>
+                  <option>Other</option>
+                </select>
+                <textarea className="form-control-modern" rows={3} placeholder="Your message or question..." style={{ resize: 'vertical' }} />
+                <button type="submit" className="btn-primary-custom justify-content-center w-100" style={{ padding: 14 }}>
+                  Send Message
+                  <ArrowRight size={16} />
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </div>
