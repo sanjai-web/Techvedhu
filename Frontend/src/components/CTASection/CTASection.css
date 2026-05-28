@@ -1,0 +1,129 @@
+/* ===== CTA Section ===== */
+.cta-section { background: var(--surface); }
+
+.cta-card {
+  position: relative;
+  background: linear-gradient(135deg, #3730A3 0%, #4F46E5 40%, #7C3AED 100%);
+  border-radius: var(--radius-xl);
+  padding: 72px 48px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.cta-bg-circle-1 {
+  width: 400px;
+  height: 400px;
+  background: white;
+  top: -200px;
+  right: -100px;
+}
+
+.cta-bg-circle-2 {
+  width: 300px;
+  height: 300px;
+  background: #7C3AED;
+  bottom: -150px;
+  left: -50px;
+}
+
+.cta-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius-full);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.02em;
+}
+
+.cta-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  color: white;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  font-family: var(--font-display);
+}
+
+.cta-subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 520px;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.cta-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  font-family: var(--font-sans);
+}
+
+.cta-secondary-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: white;
+  color: white;
+}
+
+.cta-note {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .cta-card { padding: 48px 24px; }
+  .cta-actions { flex-direction: column; width: 100%; }
+  .cta-actions > * { width: 100%; justify-content: center; }
+}

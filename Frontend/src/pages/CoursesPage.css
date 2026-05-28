@@ -1,0 +1,72 @@
+/* ===== Page Shared Styles ===== */
+.page-content { padding-top: 72px; } /* Offset for sticky navbar */
+
+.page-hero {
+  padding: 64px 0 48px;
+}
+
+/* Courses search */
+.courses-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 680px;
+  margin: 32px auto 20px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  padding: 6px 6px 6px 20px;
+}
+
+.courses-search-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.courses-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  background: transparent;
+}
+
+.courses-search-input::placeholder { color: var(--text-muted); }
+
+.courses-search-btn {
+  flex-shrink: 0;
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+}
+
+/* Quick Filters */
+.quick-filters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 6px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--white);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.filter-chip:hover, .filter-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
