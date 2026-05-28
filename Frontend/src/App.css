@@ -1,0 +1,11 @@
+/* App.css — App-level layout styles */
+.app-wrapper {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}

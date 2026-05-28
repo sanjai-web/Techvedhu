@@ -1,0 +1,205 @@
+.courses-section { background: var(--bg-dark); }
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.filter-btn {
+  background: rgba(255,255,255,0.04);
+  color: var(--text-muted);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  font-family: var(--font-secondary);
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: rgba(108, 99, 255, 0.2);
+  border-color: var(--primary);
+  color: var(--text-white);
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.course-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-normal);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.course-card:hover {
+  border-color: var(--border-subtle);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--transition-normal);
+}
+
+.course-card:hover .card-glow { opacity: 1; }
+
+.course-card-banner {
+  position: relative;
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.course-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.course-card:hover .course-banner-img {
+  transform: scale(1.06);
+}
+
+.course-duration-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.course-icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  border: 2px solid var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: var(--transition-normal);
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  z-index: 3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.course-card:hover .course-icon-wrap {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.course-card-body {
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.course-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-white);
+  position: relative; z-index: 1;
+  margin: 0;
+}
+
+.course-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  position: relative; z-index: 1;
+  margin: 0;
+  flex: 1;
+}
+
+.course-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  position: relative; z-index: 1;
+}
+
+.tool-tag {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+  position: relative; z-index: 1;
+}
+
+.card-stats {
+  display: flex;
+  gap: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.card-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-cta {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 991px) {
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+  .courses-grid { grid-template-columns: 1fr; }
+}
