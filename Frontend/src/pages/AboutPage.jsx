@@ -1,244 +1,362 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Target, Heart, Globe, Users, ArrowRight, MapPin, Phone, Mail, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import './CoursesPage.css';
+import { motion } from 'framer-motion';
+import {
+  Target, Eye, Users, Award, TrendingUp, Star,
+  CheckCircle, Zap, MapPin, Phone, Mail, ArrowRight, ShieldCheck
+} from 'lucide-react';
+import './AboutPage.css';
 
-// Real TechVedhu.com "Why Choose Us" content
-const whyUs = [
-  { icon: '🎯', title: 'Live Interactive Class', desc: 'Learn in real-time with industry experts — not pre-recorded videos. Ask questions, collaborate, and grow.' },
-  { icon: '💼', title: 'Gain Working Experience', desc: 'Build professional projects alongside practitioners, mirroring real tech company environments.' },
-  { icon: '🤝', title: '1-1 Assistance', desc: 'Dedicated mentors guide you personally through every challenge in your learning journey.' },
-  { icon: '🧠', title: 'Expert Advice', desc: 'Learn directly from professionals who have worked at Accenture, Zoho, Microsoft, Amazon, and Walmart.' },
-  { icon: '📝', title: 'Mock Assessment', desc: 'Comprehensive mock tests, coding challenges, and interview simulations mirror real hiring processes.' },
-  { icon: '🏆', title: 'Placement Guaranteed', desc: 'Our 100+ hiring partner network ensures you land your dream tech role upon program completion.' },
+const milestones = [
+  { year: '2020', title: 'TechVedhu Founded', desc: 'Started with a vision to bridge the gap between academic education and industry requirements.' },
+  { year: '2021', title: '1,000 Learners', desc: 'Reached our first major milestone with students from across Tamil Nadu and beyond.' },
+  { year: '2022', title: '50+ Hiring Partners', desc: 'Built a robust network of companies actively hiring our graduates.' },
+  { year: '2023', title: '5,000+ Placements', desc: 'Expanded our programs and helped 5,000+ learners launch successful tech careers.' },
+  { year: '2024', title: '10,700+ Learners', desc: 'Scaled to become India\'s premier work-experience-based EdTech platform.' },
 ];
 
-// Real partner companies
-const companies = ['Accenture', 'Zoho', 'Microsoft', 'Amazon', 'Walmart', 'Cognizant'];
-
-const programHighlights = [
-  { label: '1000+', desc: 'Learning Hours' },
-  { label: '10.7K+', desc: 'Registered Learners' },
-  { label: '92%', desc: 'Positive Career Impact' },
-  { label: '50%', desc: 'Average Salary Hike' },
-  { label: '100+', desc: 'Hiring Partners' },
-  { label: '10+', desc: 'Languages Supported' },
+const teamValues = [
+  { icon: <Target size={22} />, title: 'Mission-Driven', desc: 'Every decision is guided by our mission to make quality tech education accessible.', color: '#4F46E5' },
+  { icon: <Eye size={22} />, title: 'Industry-Aligned', desc: 'Our curriculum is built with and for the companies that hire our graduates.', color: '#10B981' },
+  { icon: <Users size={22} />, title: 'Student-First', desc: 'We measure success by the careers our students build, not just content delivered.', color: '#F59E0B' },
+  { icon: <ShieldCheck size={22} />, title: 'Quality Guaranteed', desc: 'Every program undergoes rigorous quality review by industry practitioners.', color: '#EF4444' },
 ];
+
+const statsData = [
+  { value: '10.7K+', label: 'Learners Enrolled', color: '#4F46E5' },
+  { value: '4.8 ★', label: 'Google Rating', color: '#F59E0B' },
+  { value: '100+', label: 'Hiring Partners', color: '#10B981' },
+  { value: '50%', label: 'Avg Salary Hike', color: '#EF4444' },
+];
+
+const hiringPartners = ['Accenture', 'Zoho', 'Microsoft', 'Amazon', 'Walmart', 'Cognizant', 'Infosys', 'TCS', 'Wipro', 'HCL'];
 
 export default function AboutPage() {
   return (
-    <div className="page-content">
+    <div className="about-page">
 
-      {/* Hero */}
-      <div className="page-hero bg-surface">
-        <div className="container text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="section-label">About TechVedhu</p>
-            <h1 className="section-title">
-              Learn Just Like You Would Be in<br />
-              <span className="text-gradient">The Best Tech Companies in India</span>
-            </h1>
-            <p className="section-subtitle mx-auto">
-              Work-experience-based learning personalized programs to supercharge your
-              career and land your dream tech job at India's best tech companies.
-            </p>
-            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: 28 }}>
-              <Link to="/courses" className="btn-primary-custom">Explore Programs <ArrowRight size={16} /></Link>
-              <a href="https://wa.me/919363603504" target="_blank" rel="noopener noreferrer" className="btn-outline-custom">
-                Book Free Trial
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      {/* ── Hero Section ── */}
+      <section className="about-hero">
+        <div className="about-hero-orb about-orb-1" />
+        <div className="about-hero-orb about-orb-2" />
+        <div className="about-hero-dots" />
 
-      {/* Mission Statement */}
-      <section className="section-padding">
         <div className="container">
-          <div className="about-mission-grid">
+          <div className="about-hero-inner">
+
+            {/* Left: Content */}
             <motion.div
-              initial={{ opacity: 0, x: -32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              className="about-hero-content"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <p className="section-label">Our Mission</p>
-              <h2 className="section-title">
-                Supercharge Your Career{' '}
-                <span className="text-gradient">Right Away</span>
-              </h2>
-              <p style={{ fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 24 }}>
-                TechVedhu is built on a single belief — every learner deserves access to the kind
-                of work experience that transforms their career. We're not just an ed-tech platform;
-                we're your career launchpad.
+              <div className="about-hero-badge">
+                <ShieldCheck size={14} />
+                Trusted by 10,700+ Learners
+              </div>
+
+              <h1 className="about-hero-title">
+                We Don't Just Teach —<br />
+                <span className="text-gradient">We Place.</span>
+              </h1>
+
+              <p className="about-hero-subtitle">
+                TechVedhu is Tamil Nadu's leading work-experience-based learning platform.
+                Founded with a single belief: learning should mirror how the best tech
+                companies actually work.
               </p>
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {[
-                  'Build professional projects with real professionals',
-                  'Master the current cutting-edge technologies',
-                  'Crack your dream role at the best tech companies',
-                  '100+ hiring partners actively sourcing from TechVedhu',
-                ].map((item) => (
-                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 15, color: 'var(--text-secondary)' }}>
-                    <CheckCircle size={16} style={{ color: 'var(--success)', flexShrink: 0 }} /> {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=560&h=400&fit=crop"
-                alt="TechVedhu Learning Environment"
-                style={{ width: '100%', height: 380, objectFit: 'cover', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-xl)' }}
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* Stats */}
-      <section className="section-padding bg-surface">
-        <div className="container">
-          <div className="text-center mb-5">
-            <p className="section-label">By The Numbers</p>
-            <h2 className="section-title">Our Impact at a Glance</h2>
-          </div>
-          <div className="about-stats-grid">
-            {programHighlights.map((s, i) => (
-              <motion.div
-                key={s.label}
-                className="about-stat-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-              >
-                <div className="about-stat-value">{s.label}</div>
-                <div className="about-stat-label">{s.desc}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="section-padding">
-        <div className="container">
-          <div className="text-center mb-5">
-            <p className="section-label">Why Choose TechVedhu</p>
-            <h2 className="section-title">
-              The TechVedhu{' '}
-              <span className="text-gradient">Difference</span>
-            </h2>
-          </div>
-          <div className="why-us-grid">
-            {whyUs.map((item, i) => (
-              <motion.div
-                key={item.title}
-                className="why-us-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-              >
-                <span className="why-us-icon">{item.icon}</span>
-                <h4 className="why-us-title">{item.title}</h4>
-                <p className="why-us-desc">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Learners Work At */}
-      <section className="section-padding bg-surface">
-        <div className="container text-center">
-          <p className="section-label">Hiring Partners</p>
-          <h2 className="section-title">
-            Our Learners Work At{' '}
-            <span className="text-gradient">Top Companies</span>
-          </h2>
-          <p className="section-subtitle mx-auto mb-5">
-            100+ partner companies actively hiring TechVedhu graduates across India.
-          </p>
-          <div className="companies-row">
-            {companies.map((c) => (
-              <div key={c} className="company-name-chip">{c}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact / Address */}
-      <section className="section-padding">
-        <div className="container">
-          <div className="about-contact-grid">
-            <div>
-              <p className="section-label">Get In Touch</p>
-              <h2 className="section-title">
-                We're Here to{' '}
-                <span className="text-gradient">Help You</span>
-              </h2>
-              <p className="section-subtitle mb-4">
-                Have questions about our programs? Reach out to our team — we'll help
-                you choose the right learning path for your career goals.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {[
-                  { icon: <Phone size={18} />, label: 'Phone', value: '+91 93636 30504', href: 'tel:+919363630504' },
-                  { icon: <Mail size={18} />, label: 'Email', value: 'support@techvedhu.com', href: 'mailto:support@techvedhu.com' },
-                  { icon: <MapPin size={18} />, label: 'Corporate Office', value: '7/257c Lakshmi Complex, Advaitha Ashram Road, Sinthampalayam, Balaji Nagar, Fairlands, Salem — 636016, Tamil Nadu, India.', href: null },
-                ].map((item) => (
-                  <div key={item.label} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                    <div style={{ width: 40, height: 40, background: 'var(--primary-light)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', flexShrink: 0 }}>
-                      {item.icon}
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 2 }}>{item.label}</div>
-                      {item.href ? (
-                        <a href={item.href} style={{ fontSize: 15, fontWeight: 600, color: 'var(--primary)', textDecoration: 'none' }}>{item.value}</a>
-                      ) : (
-                        <p style={{ fontSize: 14, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>{item.value}</p>
-                      )}
-                    </div>
+              <div className="about-hero-checks">
+                {['Live classes by industry practitioners', 'Real projects, not toy exercises', 'Placement guaranteed with 100+ partner network'].map((item) => (
+                  <div key={item} className="about-hero-check-item">
+                    <CheckCircle size={16} className="about-check-icon" />
+                    {item}
                   </div>
                 ))}
               </div>
-            </div>
 
-            {/* Quick Inquiry Form */}
-            <div className="about-form-card">
-              <h3 style={{ fontSize: 20, fontWeight: 800, marginBottom: 20 }}>Send a Quick Message</h3>
-              <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <input type="text" className="form-control-modern" placeholder="Your Full Name" required />
-                <input type="email" className="form-control-modern" placeholder="Email Address" required />
-                <input type="tel" className="form-control-modern" placeholder="Phone Number" />
-                <select className="form-control-modern">
-                  <option value="">Select a Program</option>
-                  <option>Web Development</option>
-                  <option>Machine Learning</option>
-                  <option>Data Science</option>
-                  <option>Career Launchpad (FSD)</option>
-                  <option>Career Launchpad (DADS)</option>
-                  <option>FinTech & Digital Finance</option>
-                  <option>Other</option>
-                </select>
-                <textarea className="form-control-modern" rows={3} placeholder="Your message or question..." style={{ resize: 'vertical' }} />
-                <button type="submit" className="btn-primary-custom justify-content-center w-100" style={{ padding: 14 }}>
-                  Send Message
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 32 }}>
+                <a href="https://wa.me/919363603504" target="_blank" rel="noopener noreferrer" className="btn-primary-custom">
+                  <Zap size={16} fill="currentColor" />
+                  Book Free Trial
                   <ArrowRight size={16} />
-                </button>
-              </form>
-            </div>
+                </a>
+                <Link to="/courses" className="btn-outline-custom">
+                  View Programs
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right: Person + floating elements */}
+            <motion.div
+              className="about-hero-visual"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+            >
+              <div className="about-person-stage">
+                <div className="about-person-blob" />
+                <div className="about-person-ring about-ring-1" />
+                <div className="about-person-ring about-ring-2" />
+
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=420&h=560&fit=crop&crop=top&auto=format"
+                  alt="TechVedhu Mentor"
+                  className="about-person-img"
+                />
+
+                {/* Floating stat bubbles */}
+                <motion.div
+                  className="about-float-card about-float-card-1"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <span className="about-float-icon">🏆</span>
+                  <div>
+                    <div className="about-float-value">4.8/5</div>
+                    <div className="about-float-label">Google Rating</div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="about-float-card about-float-card-2"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                >
+                  <span className="about-float-icon">🚀</span>
+                  <div>
+                    <div className="about-float-value">10.7K+</div>
+                    <div className="about-float-label">Learners</div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="about-float-card about-float-card-3"
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                >
+                  <span className="about-float-icon">💼</span>
+                  <div>
+                    <div className="about-float-value">100+</div>
+                    <div className="about-float-label">Companies Hiring</div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Stats Bar ── */}
+      <section className="about-stats-bar">
+        <div className="container">
+          <div className="about-stats-inner">
+            {statsData.map((s, i) => (
+              <React.Fragment key={s.label}>
+                <motion.div
+                  className="about-stat-item"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <span className="about-stat-value" style={{ color: s.color }}>{s.value}</span>
+                  <span className="about-stat-label">{s.label}</span>
+                </motion.div>
+                {i < statsData.length - 1 && <div className="about-stat-divider" />}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Mission & Vision ── */}
+      <section className="section-padding" style={{ background: '#F8FAFF' }}>
+        <div className="container">
+          <div className="about-mv-grid">
+            <motion.div
+              className="about-mv-card about-mv-mission"
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="about-mv-icon-wrap" style={{ background: '#EEF2FF', color: '#4F46E5' }}>
+                <Target size={28} />
+              </div>
+              <h2 className="about-mv-title">Our Mission</h2>
+              <p className="about-mv-text">
+                To democratize tech education and empower every learner — regardless of
+                background — to break into India's fastest-growing industry through
+                immersive, work-experience-based learning that mirrors the real world.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="about-mv-card about-mv-vision"
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+            >
+              <div className="about-mv-icon-wrap" style={{ background: '#ECFDF5', color: '#10B981' }}>
+                <Eye size={28} />
+              </div>
+              <h2 className="about-mv-title">Our Vision</h2>
+              <p className="about-mv-text">
+                To be India's most trusted career launchpad — where every graduate
+                is sought after by top companies, commands a premium salary, and has
+                the confidence to lead in an AI-first world.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Core Values ── */}
+      <section className="section-padding" style={{ background: 'white' }}>
+        <div className="container">
+          <div className="text-center mb-5">
+            <p className="section-label">What We Stand For</p>
+            <h2 className="section-title">
+              Built on <span className="text-gradient">Principles That Matter</span>
+            </h2>
+            <div className="divider mx-auto" />
+          </div>
+          <div className="about-values-grid">
+            {teamValues.map((v, i) => (
+              <motion.div
+                key={v.title}
+                className="about-value-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -6 }}
+              >
+                <div className="about-value-icon" style={{ background: `${v.color}12`, color: v.color }}>
+                  {v.icon}
+                </div>
+                <h3 className="about-value-title">{v.title}</h3>
+                <p className="about-value-desc">{v.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Our Story / Timeline ── */}
+      <section className="section-padding" style={{ background: '#F8FAFF' }}>
+        <div className="container">
+          <div className="text-center mb-5">
+            <p className="section-label">Our Journey</p>
+            <h2 className="section-title">
+              From a Vision to <span className="text-gradient">10,700+ Lives Changed</span>
+            </h2>
+            <div className="divider mx-auto" />
+          </div>
+          <div className="about-timeline">
+            {milestones.map((m, i) => (
+              <motion.div
+                key={m.year}
+                className={`about-timeline-item ${i % 2 === 0 ? 'left' : 'right'}`}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="about-timeline-card">
+                  <span className="about-timeline-year">{m.year}</span>
+                  <h3 className="about-timeline-title">{m.title}</h3>
+                  <p className="about-timeline-desc">{m.desc}</p>
+                </div>
+                <div className="about-timeline-dot" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Hiring Partners ── */}
+      <section className="section-padding" style={{ background: 'white' }}>
+        <div className="container">
+          <div className="text-center mb-4">
+            <p className="section-label">Our Network</p>
+            <h2 className="section-title">
+              Our Graduates Work at <span className="text-gradient">India's Best</span>
+            </h2>
+            <p className="section-subtitle mx-auto">
+              100+ companies actively source talent from our alumni network.
+            </p>
+            <div className="divider mx-auto" />
+          </div>
+          <div className="about-partners-grid">
+            {hiringPartners.map((company, i) => (
+              <motion.div
+                key={company}
+                className="about-partner-chip"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+              >
+                {company}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact CTA ── */}
+      <section className="about-contact section-padding">
+        <div className="container">
+          <motion.div
+            className="about-contact-card"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="about-contact-content">
+              <h2 className="about-contact-title">Ready to Start Your Journey?</h2>
+              <p className="about-contact-subtitle">
+                Talk to our admissions team. Free demo, no pressure, no commitment.
+              </p>
+              <div className="about-contact-links">
+                <a href="tel:+919363630504" className="about-contact-item">
+                  <div className="about-contact-icon-wrap"><Phone size={18} /></div>
+                  <div>
+                    <div className="about-contact-item-label">Call Us</div>
+                    <div className="about-contact-item-val">+91 93636 30504</div>
+                  </div>
+                </a>
+                <a href="mailto:support@techvedhu.com" className="about-contact-item">
+                  <div className="about-contact-icon-wrap"><Mail size={18} /></div>
+                  <div>
+                    <div className="about-contact-item-label">Email Us</div>
+                    <div className="about-contact-item-val">support@techvedhu.com</div>
+                  </div>
+                </a>
+                <a href="https://maps.google.com/?q=Salem+Tamil+Nadu" target="_blank" rel="noopener noreferrer" className="about-contact-item">
+                  <div className="about-contact-icon-wrap"><MapPin size={18} /></div>
+                  <div>
+                    <div className="about-contact-item-label">Visit Us</div>
+                    <div className="about-contact-item-val">Salem, Tamil Nadu</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <a
+              href="https://wa.me/919363603504"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-contact-cta"
+            >
+              <Zap size={18} fill="currentColor" />
+              Book Free Trial on WhatsApp
+              <ArrowRight size={18} />
+            </a>
+          </motion.div>
         </div>
       </section>
     </div>

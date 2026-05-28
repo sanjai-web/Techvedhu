@@ -3,73 +3,58 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Video, Briefcase, Trophy, Headphones, FileCheck, BarChart3,
-  CheckCircle, ArrowRight, Zap
+  CheckCircle, ArrowRight, Zap, Star, Users, Award
 } from 'lucide-react';
 import './FeaturesSection.css';
 
-// ─── REAL features from TechVedhu.com "Why Choose Us" ────────────────────────
 const features = [
   {
-    icon: <Video size={24} />,
+    icon: <Video size={22} />,
     title: 'Live Interactive Classes',
-    description: 'Learn in real-time with industry experts through fully live, interactive sessions — not pre-recorded videos.',
+    description: 'Real-time sessions with industry experts. Ask questions, collaborate, and learn — not pre-recorded videos.',
     color: '#4F46E5',
     bg: '#EEF2FF',
+    tag: 'Core Feature',
   },
   {
-    icon: <Briefcase size={24} />,
-    title: 'Gain Working Experience',
-    description: 'Work on professional projects alongside industry practitioners, simulating real tech company environments.',
+    icon: <Briefcase size={22} />,
+    title: 'Real Work Experience',
+    description: 'Build professional projects alongside practitioners, simulating how top tech companies actually work.',
     color: '#10B981',
     bg: '#ECFDF5',
+    tag: 'Unique to TechVedhu',
   },
   {
-    icon: <Headphones size={24} />,
-    title: '1-1 Assistance',
-    description: 'Get personalized support from dedicated mentors who guide you through challenges at every step of your journey.',
+    icon: <Headphones size={22} />,
+    title: '1-on-1 Mentorship',
+    description: 'Dedicated mentors guide you personally. Get unstuck faster and grow with someone in your corner.',
     color: '#7C3AED',
     bg: '#F5F3FF',
+    tag: 'Personal Support',
   },
   {
-    icon: <Trophy size={24} />,
-    title: 'Expert Advice',
-    description: 'Learn directly from professionals who have worked at top tech companies like Zoho, Microsoft, Accenture, and Amazon.',
+    icon: <Trophy size={22} />,
+    title: 'Expert-Led Learning',
+    description: 'Learn from engineers and managers who\'ve worked at Zoho, Microsoft, Accenture, Amazon and Walmart.',
     color: '#F59E0B',
     bg: '#FFFBEB',
+    tag: 'Industry Experts',
   },
   {
-    icon: <FileCheck size={24} />,
-    title: 'Mock Assessments',
-    description: 'Prepare confidently with comprehensive mock tests, coding challenges, and interview simulations designed to mirror real hiring processes.',
+    icon: <FileCheck size={22} />,
+    title: 'Mock Interviews & Tests',
+    description: 'Comprehensive coding challenges, aptitude tests and interview simulations — exactly like real hiring.',
     color: '#0EA5E9',
     bg: '#F0F9FF',
+    tag: 'Placement Prep',
   },
   {
-    icon: <BarChart3 size={24} />,
+    icon: <BarChart3 size={22} />,
     title: 'Placement Guaranteed',
-    description: 'We don\'t just teach — we place. Our 100+ hiring partner network ensures you land your dream tech role upon program completion.',
+    description: '100+ hiring partner network ensures you land your dream role. We don\'t just teach — we place.',
     color: '#EF4444',
     bg: '#FEF2F2',
-  },
-];
-
-// ─── Program types from TechVedhu.com ─────────────────────────────────────
-const programTypes = [
-  {
-    title: 'Internship / Certificate Program',
-    description: 'Gain real-world experience through structured internship programs. Develop the skills they need, work on live projects, and earn a recognized certificate upon completion.',
-    cta: 'Explore Programs',
-    link: '/courses',
-    icon: '🎓',
-    color: '#4F46E5',
-  },
-  {
-    title: 'Career Launchpad Program',
-    description: 'Career Launchpad is a comprehensive career development program offering personalized guidance and resources to propel your professional journey with guaranteed referrals.',
-    cta: 'Explore Launchpad',
-    link: '/courses',
-    icon: '🚀',
-    color: '#7C3AED',
+    tag: 'Our Promise',
   },
 ];
 
@@ -82,118 +67,156 @@ const highlights = [
   'Free demo session before you enroll',
 ];
 
+// Proof numbers displayed inside the split section
+const splitStats = [
+  { value: '10.7K+', label: 'Learners Enrolled', color: '#4F46E5' },
+  { value: '4.8★', label: 'Google Rating', color: '#F59E0B' },
+  { value: '100+', label: 'Hiring Partners', color: '#10B981' },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.97 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: 'easeOut' } },
+};
+
 export default function FeaturesSection() {
   return (
     <section className="features-section section-padding bg-surface" id="features">
       <div className="container">
-        {/* Header */}
+
+        {/* ── Header ── */}
         <div className="text-center mb-5">
-          <p className="section-label">Why Choose TechVedhu</p>
+          <p className="section-label">Why TechVedhu</p>
           <h2 className="section-title">
-            Learn Like You're Already{' '}
-            <span className="text-gradient">In a Tech Company</span>
+            Learn the Way the Best Companies{' '}
+            <span className="text-gradient">Actually Work</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Our work-experience-based learning model is what sets TechVedhu apart —
-            every program is designed to mirror what happens inside India's best tech companies.
+            TechVedhu's work-experience model is what sets us apart — every program mirrors
+            the real workflows of India's top tech companies.
           </p>
           <div className="divider mx-auto" />
         </div>
 
-        {/* Features Grid */}
-        <div className="features-grid">
-          {features.map((feature, i) => (
+        {/* ── Features Grid ── */}
+        <motion.div
+          className="features-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {features.map((feature) => (
             <motion.div
               key={feature.title}
               className="feature-card"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              variants={cardVariants}
+              whileHover={{ y: -6, boxShadow: '0 16px 48px rgba(79,70,229,0.12)' }}
             >
-              <div
-                className="feature-icon"
-                style={{ background: feature.bg, color: feature.color }}
-              >
-                {feature.icon}
+              <div className="feature-card-top">
+                <div
+                  className="feature-icon"
+                  style={{ background: feature.bg, color: feature.color }}
+                >
+                  {feature.icon}
+                </div>
+                <span
+                  className="feature-tag"
+                  style={{ background: `${feature.color}12`, color: feature.color }}
+                >
+                  {feature.tag}
+                </span>
               </div>
               <h3 className="feature-title">{feature.title}</h3>
               <p className="feature-description">{feature.description}</p>
+              <div className="feature-card-footer">
+                <span className="feature-learn-more" style={{ color: feature.color }}>
+                  Learn more →
+                </span>
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Program Type Cards */}
-        <div className="program-types mt-5">
-          <div className="text-center mb-4">
-            <h3 className="section-title" style={{ fontSize: 28 }}>
-              Choose Your{' '}
-              <span className="text-gradient">Learning Path</span>
-            </h3>
-          </div>
-          <div className="program-types-grid">
-            {programTypes.map((p, i) => (
-              <motion.div
-                key={p.title}
-                className="program-type-card"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                style={{ borderColor: `${p.color}30` }}
-              >
-                <span className="program-type-icon">{p.icon}</span>
-                <h4 className="program-type-title" style={{ color: p.color }}>{p.title}</h4>
-                <p className="program-type-desc">{p.description}</p>
-                <Link
-                  to={p.link}
-                  className="program-type-cta"
-                  style={{ color: p.color, borderColor: `${p.color}30` }}
-                >
-                  {p.cta} →
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        {/* ── Split Section: Image + Highlights ── */}
+        <div className="features-split mt-5 pt-4">
 
-        {/* Bottom Split Section */}
-        <div className="features-split mt-5">
+          {/* Left: Visual proof block */}
           <motion.div
             className="features-split-image"
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=560&h=400&fit=crop"
-              alt="TechVedhu Learning Experience"
-              className="split-image"
-            />
-            <div className="dashboard-overlay">
-              <div className="dashboard-card">
-                <Zap size={16} style={{ color: '#F59E0B' }} />
-                <div>
-                  <div className="dashboard-card-title">Placement Rate</div>
-                  <div className="dashboard-card-value">🔥 Guaranteed</div>
-                </div>
-              </div>
+            <div className="split-image-stack">
+              <img
+                src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=560&h=420&fit=crop&auto=format"
+                alt="TechVedhu mentorship session"
+                className="split-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=top&auto=format"
+                alt="Happy TechVedhu student"
+                className="split-image-inset"
+              />
             </div>
+
+            {/* Floating mini stats */}
+            <motion.div
+              className="split-stat-float"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              {splitStats.map((s) => (
+                <div key={s.label} className="split-stat-item">
+                  <span className="split-stat-value" style={{ color: s.color }}>{s.value}</span>
+                  <span className="split-stat-label">{s.label}</span>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Google rating bubble */}
+            <motion.div
+              className="split-rating-bubble"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="split-rating-stars">
+                {Array(5).fill(0).map((_, i) => (
+                  <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />
+                ))}
+              </div>
+              <span className="split-rating-text">
+                <strong>4.8/5</strong> on Google Reviews
+              </span>
+            </motion.div>
           </motion.div>
 
+          {/* Right: Content */}
           <motion.div
             className="features-split-content"
             initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
             <p className="section-label">The TechVedhu Advantage</p>
-            <h2 className="section-title" style={{ fontSize: 28 }}>
-              An Immersive, Work-Based{' '}
-              <span className="text-gradient">Learning Ecosystem</span>
+            <h2 className="section-title" style={{ fontSize: 'clamp(24px, 3vw, 34px)' }}>
+              An Immersive Ecosystem Built{' '}
+              <span className="text-gradient">for Your Career</span>
             </h2>
-            <p className="section-subtitle">
-              TechVedhu is more than just courses. It's a complete career launchpad
+            <p className="section-subtitle" style={{ marginBottom: 28 }}>
+              TechVedhu is more than courses. It's a complete career launchpad
               with live mentorship, real projects, mock assessments, and 100+
               hiring partners ready to place you.
             </p>
@@ -201,18 +224,32 @@ export default function FeaturesSection() {
             <ul className="highlights-list">
               {highlights.map((item) => (
                 <li key={item} className="highlight-item">
-                  <CheckCircle size={18} className="highlight-check" />
+                  <div className="highlight-check-wrap">
+                    <CheckCircle size={16} className="highlight-check" />
+                  </div>
                   {item}
                 </li>
               ))}
             </ul>
 
-            <Link to="/register" className="btn-primary-custom mt-4 d-inline-flex">
-              Book Your Free Trial
-              <ArrowRight size={18} />
-            </Link>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 32 }}>
+              <a
+                href="https://wa.me/919363603504"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary-custom"
+              >
+                <Zap size={16} fill="currentColor" />
+                Book Free Trial
+                <ArrowRight size={16} />
+              </a>
+              <Link to="/about" className="btn-outline-custom">
+                Our Story
+              </Link>
+            </div>
           </motion.div>
         </div>
+
       </div>
     </section>
   );

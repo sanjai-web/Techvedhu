@@ -83,11 +83,14 @@ const posts = [
 export default function BlogPage() {
   return (
     <div className="page-content">
-      <div className="page-hero bg-surface">
-        <div className="container text-center">
+      {/* ── Premium Hero ── */}
+      <div className="blog-hero">
+        <div className="blog-hero-orb blog-hero-orb-1" />
+        <div className="blog-hero-orb blog-hero-orb-2" />
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
             <p className="section-label">TechVedhu Blog</p>
-            <h1 className="section-title">
+            <h1 className="section-title" style={{ fontSize: 'clamp(34px, 5vw, 56px)' }}>
               Insights, Guides &{' '}
               <span className="text-gradient">Career Advice</span>
             </h1>

@@ -31,15 +31,31 @@ export default function RegisterPage() {
             <span className="auth-left-accent">Today</span>
           </h2>
           <p className="auth-left-subtitle">
-            7-day free trial. No credit card required. Cancel anytime.
+            Join 10,700+ learners already building their tech careers. Free demo — no credit card required.
           </p>
+
+          {/* Real Stats */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 24 }}>
+            {[
+              { v: '10.7K+', l: 'Learners' },
+              { v: '4.8 ★', l: 'Google Rating' },
+              { v: '100+', l: 'Companies' },
+              { v: '50%', l: 'Salary Hike' },
+            ].map((s) => (
+              <div key={s.l} style={{ background: 'rgba(255,255,255,0.08)', borderRadius: 12, padding: '12px 14px', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                <div style={{ fontSize: 20, fontWeight: 900, color: '#A5B4FC', fontFamily: 'var(--font-display)' }}>{s.v}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', fontWeight: 600, marginTop: 2 }}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+
           <div className="auth-features">
             {[
-              '200+ Expert-Led Courses',
+              '12 Internship / Certificate Programs',
               'Live Mentorship Sessions',
-              'Guaranteed Internship',
-              'Industry Certificate',
-              'Placement Support',
+              'Guaranteed Internship Certificate',
+              'Placement Support — 100+ Partners',
+              'Free Demo Before You Enroll',
             ].map((f) => (
               <div key={f} className="auth-feature-item">
                 <span className="auth-feature-check">✓</span>
