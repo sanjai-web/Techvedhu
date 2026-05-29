@@ -22,19 +22,80 @@ export default function ScholarshipPage() {
 
   return (
     <div style={{ paddingTop: '100px' }}>
-      <section className="sp-hero section-padding-sm">
-        <div className="container text-center">
-          <div className="section-label reveal">
-            <i className="bi bi-gift-fill"></i> Scholarship Program
+      <section className="sp-hero sp-hero-split section-padding-sm">
+        <div className="container sp-hero-grid">
+          {/* Left text */}
+          <div className="sp-hero-left reveal">
+            <div className="section-label">
+              <i className="bi bi-gift-fill"></i> Scholarship Program
+            </div>
+            <h1 className="section-title" style={{ textAlign: 'left' }}>
+              50% Scholarship for{' '}
+              <span className="gradient-text">Deserving Students</span>
+            </h1>
+            <p className="section-subtitle" style={{ textAlign: 'left', margin: '0 0 28px' }}>
+              We believe talent knows no financial barrier. Apply now and transform your career at half the price.
+            </p>
+            <div className="sp-hero-perks">
+              {['Final year & recent graduates eligible', 'Minimum 60% academic score', 'Strong motivation and career clarity', 'Open to all engineering & arts backgrounds'].map(p => (
+                <div key={p} className="sp-perk-item">
+                  <i className="bi bi-check-circle-fill"></i>
+                  <span>{p}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <h1 className="section-title reveal delay-100">
-            50% Scholarship for <span className="gradient-text">Deserving Students</span>
-          </h1>
-          <p className="section-subtitle reveal delay-200">
-            We believe talent knows no financial barrier. Apply now for our scholarship and transform your career at half the price.
-          </p>
+
+          {/* Right person visual */}
+          <div className="sp-hero-visual reveal delay-200">
+            {/* SVG swirl */}
+            <svg className="sp-swirl sp-swirl-left" viewBox="0 0 200 400" fill="none">
+              <path d="M100 380 C20 340, 20 260, 80 220 C140 180, 160 120, 100 80 C60 50, 30 80, 50 120 C70 160, 120 150, 110 100" stroke="rgba(37,99,235,0.18)" strokeWidth="3" strokeLinecap="round" fill="none"/>
+            </svg>
+
+            {/* Cross pattern */}
+            <div className="sp-cross-pattern">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <span key={i} className="cross-dot">+</span>
+              ))}
+            </div>
+
+            {/* Person image */}
+            <div className="sp-person-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=500&h=680&q=85"
+                alt="Scholarship student"
+                className="sp-person-img"
+              />
+
+              {/* Floating badges */}
+              <div className="sp-float-badge sp-badge-1">
+                <i className="bi bi-mortarboard-fill"></i>
+              </div>
+              <div className="sp-float-badge sp-badge-2">
+                <i className="bi bi-award-fill"></i>
+              </div>
+              <div className="sp-float-badge sp-badge-3">
+                <i className="bi bi-wallet2"></i>
+              </div>
+
+              {/* Discount card */}
+              <div className="sp-discount-float">
+                <div className="sp-disc-stat">
+                  <span className="sp-disc-label">Scholarship</span>
+                  <span className="sp-disc-num">50% OFF</span>
+                </div>
+                <div className="hfc-divider"></div>
+                <div className="sp-disc-stat">
+                  <span className="sp-disc-label">Seats Left</span>
+                  <span className="sp-disc-num sp-disc-orange">23</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
 
       <ScholarshipBanner />
 

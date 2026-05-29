@@ -7,14 +7,22 @@
   overflow: hidden;
 }
 
+/* Diagonal line pattern for Why section — clearly visible */
 .why-section::before {
   content: '';
   position: absolute;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(129,140,248,0.06) 0%, transparent 70%);
-  top: -200px; right: -150px;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(37, 99, 235, 0.07) 0px,
+    rgba(37, 99, 235, 0.07) 1px,
+    transparent 1px,
+    transparent 20px
+  );
   pointer-events: none;
+  z-index: 0;
 }
+
 
 .why-header {
   text-align: center;
@@ -32,8 +40,8 @@
 /* ── Wide Hero Stat Card (full width top row) ── */
 .why-hero-card {
   grid-column: 1 / 6;
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(129,140,248,0.07) 100%);
-  border: 1px solid rgba(129,140,248,0.14);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(37,99,235,0.05) 100%);
+  border: 1px solid rgba(37,99,235,0.12);
   border-radius: var(--radius-lg);
   padding: 28px 36px;
   display: flex;
@@ -42,11 +50,12 @@
   position: relative;
   overflow: hidden;
   transition: var(--transition-normal);
+  box-shadow: 0 2px 16px rgba(37,99,235,0.07);
 }
 
 .why-hero-card:hover {
-  box-shadow: 0 12px 40px rgba(129, 140, 248, 0.12);
-  border-color: rgba(129, 140, 248, 0.25);
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.22);
 }
 
 .why-hero-top {
@@ -99,9 +108,9 @@
   margin-left: 8px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--primary-light);
-  background: rgba(129, 140, 248, 0.12);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  color: var(--primary);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
   padding: 4px 10px;
   border-radius: 999px;
   white-space: nowrap;
@@ -262,12 +271,13 @@
 }
 
 .learners-marquee-wrapper {
-  background: rgba(22, 27, 39, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 24px 0;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  padding: 20px 0;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.06);
+  backdrop-filter: blur(8px);
 }
 
 .learner-logo {
@@ -285,13 +295,16 @@
   max-height: 28px;
   max-width: 100px;
   object-fit: contain;
-  transition: transform 0.2s ease;
-  filter: brightness(0) invert(0.85); /* Ensures dark-theme readability for partner logos */
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  /* In light theme, give logos a blue tint to stay visible */
+  filter: brightness(0) saturate(100%) invert(25%) sepia(80%) saturate(600%) hue-rotate(200deg);
+  opacity: 0.5;
 }
 
 .learner-logo-img:hover {
   transform: scale(1.06);
-  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  filter: brightness(0) saturate(100%) invert(25%) sepia(80%) saturate(600%) hue-rotate(200deg);
 }
 
 /* Free Demo Banner Section */
@@ -305,10 +318,10 @@
   justify-content: space-between;
   gap: 40px;
   padding: 48px 80px;
-  background: linear-gradient(135deg, rgba(22, 27, 39, 0.8) 0%, rgba(14, 17, 23, 0.95) 100%);
+  background: var(--gradient-primary);
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-hover);
   overflow: hidden;
   position: relative;
 }
@@ -327,7 +340,7 @@
 .demo-title {
   font-size: clamp(2rem, 4vw, 2.6rem);
   font-weight: 900;
-  color: var(--text-white);
+  color: #ffffff;
   margin: 0;
   line-height: 1.25;
   letter-spacing: -0.5px;
@@ -336,7 +349,7 @@
 .demo-highlight-wrapper {
   position: relative;
   display: inline-block;
-  color: var(--secondary);
+  color: #ffffff;
 }
 
 .demo-underline-svg {
@@ -346,26 +359,26 @@
   width: 100%;
   height: 10px;
   pointer-events: none;
-  stroke: var(--secondary);
+  stroke: #ffffff;
 }
 
 .demo-subtitle {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
   margin: 0 0 20px 0;
 }
 
 .demo-cta-btn {
-  background: linear-gradient(135deg, var(--primary) 0%, #6366F1 100%);
-  color: #ffffff;
+  background: #ffffff;
+  color: var(--primary);
   padding: 14px 32px;
   border-radius: 12px;
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 6px 16px rgba(129, 140, 248, 0.3);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
   text-decoration: none;
   text-align: center;
   display: inline-block;

@@ -36,49 +36,31 @@ export default function Mentors() {
         <div className="mentors-grid">
           {mentors.map((mentor, i) => (
             <div key={mentor.id} className={`mentor-card reveal delay-${(i % 3 + 1) * 100}`}>
-              {/* Animated pattern background */}
-              <div
-                className="mentor-pattern-bg"
-                style={{
-                  background: `linear-gradient(135deg, ${mentor.color}cc 0%, ${mentor.color}88 100%)`,
-                  backgroundImage: `${patterns[i % patterns.length]}, linear-gradient(135deg, ${mentor.color}dd 0%, ${mentor.color}99 100%)`,
-                }}
-              >
-                {/* Animated floating orbs */}
-                <div className="mentor-orb mentor-orb-1" style={{ background: `${mentor.color}55` }}></div>
-                <div className="mentor-orb mentor-orb-2" style={{ background: `rgba(255,255,255,0.1)` }}></div>
-                <div className="mentor-orb mentor-orb-3" style={{ background: `${mentor.color}33` }}></div>
-              </div>
-
+              
               {/* Cutout portrait image */}
               <div className="mentor-portrait-wrap">
                 <img
                   src={mentor.avatar.replace('w=150&h=150', 'w=400&h=500').replace('fit=crop', 'fit=crop&crop=faces,top')}
                   alt={mentor.name}
                   className="mentor-portrait-img"
+                  onError={(e) => {
+                    e.target.onError = null;
+                    const isFemale = ['Priya', 'Sneha', 'Kavya'].some(f => mentor.name.includes(f));
+                    e.target.src = isFemale 
+                      ? 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80' 
+                      : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=500&q=80';
+                  }}
                 />
               </div>
 
-              {/* Info overlay */}
-              <div className="mentor-info-overlay">
-                <div className="mentor-company-badge" style={{ background: `rgba(0,0,0,0.6)`, borderColor: `${mentor.color}66` }}>
-                  <i className="bi bi-building" style={{ color: mentor.color }}></i>
-                  <strong style={{ color: '#ffffff' }}>{mentor.company}</strong>
-                </div>
+              {/* Info overlay (Dark Block) */}
+              <div className="mentor-info-block">
+                <span className="mentor-exp-pill">
+                  {mentor.exp} exp
+                </span>
                 <h4 className="mentor-name-new">{mentor.name}</h4>
                 <p className="mentor-role-new">{mentor.role}</p>
-                <div className="mentor-tags-new">
-                  <span className="mentor-tag-new" style={{ borderColor: `${mentor.color}55`, color: mentor.color }}>
-                    {mentor.domain}
-                  </span>
-                  <span className="mentor-tag-exp">
-                    <i className="bi bi-clock"></i> {mentor.exp}
-                  </span>
-                </div>
-                <a href={mentor.linkedin} className="mentor-connect-btn" target="_blank" rel="noopener noreferrer"
-                  style={{ background: mentor.color }}>
-                  <i className="bi bi-linkedin"></i> Connect
-                </a>
+                <p className="mentor-company-new">{mentor.company}</p>
               </div>
             </div>
           ))}

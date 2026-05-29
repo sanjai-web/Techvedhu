@@ -19,24 +19,31 @@ function ScrollToTop() {
 }
 
 function AppContent() {
-  // Global scroll reveal observer
+  const location = useLocation();
+
+  // Global scroll reveal observer — re-runs on every route change
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
+    // Small delay so React finishes rendering the new page before we observe
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
 
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-    revealEls.forEach((el) => observer.observe(el));
+      const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      revealEls.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
-  }, []);
+      return () => observer.disconnect();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname]); // ← re-run on every page navigation
 
   return (
     <div className="app-wrapper">

@@ -2,31 +2,58 @@
 .cl-hero-features { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
 .cl-feature-tag {
   display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.25);
-  color: var(--secondary); padding: 8px 16px; border-radius: var(--radius-full);
+  background: rgba(37, 99, 235, 0.08); border: 1px solid rgba(37, 99, 235, 0.2);
+  color: var(--primary); padding: 8px 16px; border-radius: var(--radius-full);
   font-size: 0.85rem; font-weight: 600;
 }
 
-.cl-compare { background: var(--bg-surface); }
+.cl-compare { background: #f3f7fd; padding-top: 60px; padding-bottom: 60px; }
 .cl-contact { background: var(--bg-dark); }
 
+/* Modern comparison table for light theme */
 .compare-table {
-  background: var(--bg-card); border: 1px solid var(--border-card);
-  border-radius: var(--radius-lg); overflow: hidden; max-width: 700px; margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.07);
 }
 .compare-table table { width: 100%; border-collapse: collapse; }
 .compare-table th, .compare-table td {
-  padding: 16px 24px; text-align: center; font-size: 0.9rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 15px 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.06);
+  color: var(--text-body);
 }
-.compare-table th:first-child, .compare-table td:first-child { text-align: left; color: var(--text-body); }
-.compare-table thead th { background: rgba(255,255,255,0.03); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-.th-techvedhu { background: rgba(108,99,255,0.12) !important; color: var(--primary-light) !important; }
-.td-techvedhu { background: rgba(108,99,255,0.05); }
+.compare-table th:first-child, .compare-table td:first-child {
+  text-align: left;
+  color: var(--text-body);
+  font-weight: 600;
+}
+.compare-table thead th {
+  background: #f0f6ff;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.th-techvedhu {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.3px !important;
+}
+.td-techvedhu { background: rgba(37, 99, 235, 0.04); }
 .compare-table tr:last-child td { border-bottom: none; }
-.text-success { color: var(--secondary) !important; }
-.text-danger { color: var(--accent) !important; }
-.compare-table i { font-size: 1.1rem; }
+.compare-table tr:hover td { background: rgba(37, 99, 235, 0.02); }
+.compare-table tr:hover .td-techvedhu { background: rgba(37, 99, 235, 0.07); }
+.text-success { color: #10b981 !important; }
+.text-danger { color: #f43f5e !important; }
+.compare-table i { font-size: 1.15rem; }
 
 /* Dynamic Career Launch Detail Page Styling */
 .cl-detail-page {
@@ -77,25 +104,25 @@
 }
 
 .cl-tag {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.18);
   padding: 6px 16px;
   border-radius: var(--radius-full);
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--text-white);
+  color: var(--primary);
 }
 
 .tag-duration {
-  background: rgba(0, 212, 170, 0.12);
-  border-color: rgba(0, 212, 170, 0.25);
-  color: var(--secondary);
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #059669;
 }
 
 .tag-level {
-  background: rgba(255, 107, 107, 0.12);
-  border-color: rgba(255, 107, 107, 0.25);
-  color: var(--accent);
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.25);
+  color: #ea580c;
 }
 
 .cl-detail-title {

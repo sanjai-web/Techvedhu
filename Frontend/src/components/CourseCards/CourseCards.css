@@ -1,4 +1,4 @@
-.courses-section { background: var(--bg-dark); }
+.courses-section { background: var(--bg-surface); }
 
 .category-filters {
   display: flex;
@@ -9,9 +9,9 @@
 }
 
 .filter-btn {
-  background: rgba(255,255,255,0.04);
-  color: var(--text-muted);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #ffffff;
+  color: #4B5E8A;
+  border: 1px solid rgba(37, 99, 235, 0.12);
   padding: 8px 18px;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
@@ -19,12 +19,20 @@
   cursor: pointer;
   transition: var(--transition-normal);
   font-family: var(--font-secondary);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.04);
 }
 
-.filter-btn:hover, .filter-btn.active {
-  background: rgba(108, 99, 255, 0.2);
+.filter-btn:hover {
+  background: #f1f5f9;
   border-color: var(--primary);
-  color: var(--text-white);
+  color: var(--primary);
+}
+
+.filter-btn.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
 .courses-grid {

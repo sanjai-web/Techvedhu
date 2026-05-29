@@ -36,7 +36,7 @@ export const internshipPrograms = [
     duration: '4 Months',
     level: 'Intermediate',
     category: 'AI/ML',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&h=400&q=80',
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=400&q=80',
     description: 'Build intelligent systems using cutting-edge AI techniques including NLP, Computer Vision, and GenAI models.',
     tools: ['Python', 'TensorFlow', 'PyTorch', 'OpenAI API', 'LangChain', 'HuggingFace'],
     outcomes: ['Build AI agents', 'LLM fine-tuning', 'Computer vision apps', 'RAG pipelines']
@@ -370,17 +370,17 @@ export const stats = [
 ];
 
 export const hiringPartners = [
-  { name: 'Cognizant', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Cognizant_logo_2022.svg' },
-  { name: 'Accenture', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg' },
-  { name: 'Zoho', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Zoho_logo.svg' },
-  { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
-  { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
-  { name: 'Walmart', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg' },
-  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
-  { name: 'Infosys', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg' },
-  { name: 'TCS', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg' },
-  { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-  { name: 'Oracle', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg' }
+  { name: 'Cognizant', logo: 'https://www.vectorlogo.zone/logos/cognizant/cognizant-ar21.svg' },
+  { name: 'Accenture', logo: 'https://www.vectorlogo.zone/logos/accenture/accenture-ar21.svg' },
+  { name: 'Zoho', logo: 'https://www.vectorlogo.zone/logos/zoho/zoho-ar21.svg' },
+  { name: 'Microsoft', logo: 'https://www.vectorlogo.zone/logos/microsoft/microsoft-ar21.svg' },
+  { name: 'Amazon', logo: 'https://www.vectorlogo.zone/logos/amazon/amazon-ar21.svg' },
+  { name: 'Walmart', logo: 'https://www.vectorlogo.zone/logos/walmart/walmart-ar21.svg' },
+  { name: 'Google', logo: 'https://www.vectorlogo.zone/logos/google/google-ar21.svg' },
+  { name: 'Infosys', logo: 'https://www.vectorlogo.zone/logos/infosys/infosys-ar21.svg' },
+  { name: 'TCS', logo: 'https://www.vectorlogo.zone/logos/tcs/tcs-ar21.svg' },
+  { name: 'IBM', logo: 'https://www.vectorlogo.zone/logos/ibm/ibm-ar21.svg' },
+  { name: 'Oracle', logo: 'https://www.vectorlogo.zone/logos/oracle/oracle-ar21.svg' }
 ];
 
 export const faqs = [

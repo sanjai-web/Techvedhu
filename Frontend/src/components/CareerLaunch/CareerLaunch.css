@@ -1,5 +1,5 @@
 .career-launch-section {
-  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-card-2) 50%, var(--bg-dark) 100%);
+  background: #f3f7fd;
   position: relative;
   overflow: hidden;
 }
@@ -10,7 +10,7 @@
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 800px; height: 400px;
-  background: radial-gradient(ellipse, rgba(108,99,255,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -35,8 +35,8 @@
 
 .launch-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  border-color: rgba(108,99,255,0.3);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.25);
 }
 
 .launch-card-banner {

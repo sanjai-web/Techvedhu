@@ -57,7 +57,15 @@ export default function CourseCards({ showAll = false, limit = 6, hideHeader = f
               <div className="card-glow" style={{ background: `radial-gradient(circle at 50% 0%, ${course.color}33 0%, transparent 60%)` }}></div>
 
               <div className="course-card-banner">
-                <img src={course.image} alt={course.title} className="course-banner-img" />
+                <img 
+                  src={course.image} 
+                  alt={course.title} 
+                  className="course-banner-img" 
+                  onError={(e) => {
+                    e.target.onError = null;
+                    e.target.src = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&h=400&q=80';
+                  }}
+                />
                 <div className="course-duration-badge">{course.duration}</div>
                 <div className="course-icon-wrap" style={{ backgroundColor: course.color, borderColor: course.color }}>
                   <i className={`bi ${course.icon}`} style={{ color: '#ffffff' }}></i>
