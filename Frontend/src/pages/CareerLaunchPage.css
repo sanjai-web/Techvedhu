@@ -58,6 +58,7 @@
 /* Dynamic Career Launch Detail Page Styling */
 .cl-detail-page {
   background: var(--bg-dark);
+  padding-top: 100px;
 }
 
 .cl-detail-hero {
