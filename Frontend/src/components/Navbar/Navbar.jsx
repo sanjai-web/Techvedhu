@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
-
-const navLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'Internships', path: '/internships' },
-  { label: 'Career Launch', path: '/career-launch' },
-  { label: 'Scholarship', path: '/scholarship' },
-  { label: 'Contact', path: '/contact' },
-];
+import logoImg from '../../assets/logo.png';
+import { internshipPrograms, careerLaunchPrograms } from '../../data/courses';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileInternshipsOpen, setMobileInternshipsOpen] = useState(false);
+  const [mobileCareerOpen, setMobileCareerOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -24,7 +20,15 @@ export default function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
     document.body.style.overflow = '';
+    setMobileInternshipsOpen(false);
+    setMobileCareerOpen(false);
   }, [location]);
+
+  const handleHomeClick = (e) => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const toggleMenu = () => {
     setMenuOpen(prev => {
@@ -52,11 +56,9 @@ export default function Navbar() {
               <span></span>
             </button>
 
-            <Link to="/" className="nav-logo">
-              <svg width="32" height="28" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav-logo-svg" style={{ marginRight: '8px' }}>
-                <path d="M6 4H15.5L20 15L24.5 4H34L25 24V32H15V24L6 4Z" fill="var(--primary-light)"/>
-              </svg>
-              <span className="logo-text">
+            <Link to="/" className="nav-logo" onClick={handleHomeClick}>
+              <img src={logoImg} alt="TechVedhu Logo" className="nav-logo-img" />
+              <span className="logo-text" style={{color:'whitesmoke'}}>
                 Tech<span className="logo-accent">Vedhu</span>
               </span>
             </Link>
@@ -64,16 +66,81 @@ export default function Navbar() {
 
           {/* ── Center: Nav Links ── */}
           <ul className="nav-links-desktop">
-            {navLinks.map(({ label, path }) => (
-              <li key={path}>
-                <Link
-                  to={path}
-                  className={`nav-link-item${location.pathname === path ? ' active' : ''}`}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                to="/"
+                className={`nav-link-item${location.pathname === '/' ? ' active' : ''}`}
+                onClick={handleHomeClick}
+              >
+                Home
+              </Link>
+            </li>
+
+            {/* Internship Dropdown */}
+            <li className="nav-dropdown-wrapper">
+              <Link
+                to="/internships"
+                className={`nav-link-item${location.pathname.startsWith('/internships') ? ' active' : ''}`}
+              >
+                Internship Program <i className="bi bi-chevron-down nav-chevron"></i>
+              </Link>
+              <div className="nav-dropdown-menu">
+                {internshipPrograms.map(course => (
+                  <Link
+                    key={course.id}
+                    to={`/internships/${course.slug}`}
+                    className="dropdown-item"
+                  >
+                    <span className="dropdown-icon-wrap" style={{ color: course.color }}>
+                      <i className={`bi ${course.icon}`}></i>
+                    </span>
+                    <span className="dropdown-label">{course.title.toUpperCase()}</span>
+                  </Link>
+                ))}
+              </div>
+            </li>
+
+            {/* Career Launch Dropdown */}
+            <li className="nav-dropdown-wrapper">
+              <Link
+                to="/career-launch"
+                className={`nav-link-item${location.pathname.startsWith('/career-launch') ? ' active' : ''}`}
+              >
+                Career Launchpad <i className="bi bi-chevron-down nav-chevron"></i>
+              </Link>
+              <div className="nav-dropdown-menu">
+                {careerLaunchPrograms.map(prog => (
+                  <Link
+                    key={prog.id}
+                    to={`/career-launch/${prog.slug}`}
+                    className="dropdown-item"
+                  >
+                    <span className="dropdown-icon-wrap" style={{ color: prog.color }}>
+                      <i className={`bi ${prog.icon}`}></i>
+                    </span>
+                    <span className="dropdown-label">{prog.title.toUpperCase()}</span>
+                  </Link>
+                ))}
+              </div>
+            </li>
+
+            <li>
+              <Link
+                to="/scholarship"
+                className={`nav-link-item${location.pathname === '/scholarship' ? ' active' : ''}`}
+              >
+                Scholarship
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/contact"
+                className={`nav-link-item${location.pathname === '/contact' ? ' active' : ''}`}
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
 
           {/* ── Right: CTAs ── */}
@@ -94,8 +161,12 @@ export default function Navbar() {
       <div className={`mobile-overlay${menuOpen ? ' open' : ''}`} onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }} />
       <div className={`mobile-drawer${menuOpen ? ' open' : ''}`}>
         <div className="mobile-drawer-header">
-          <Link to="/" className="nav-logo" onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}>
-            <div className="logo-icon"><i className="bi bi-lightning-charge-fill"></i></div>
+          <Link to="/" className="nav-logo" onClick={(e) => {
+            setMenuOpen(false);
+            document.body.style.overflow = '';
+            handleHomeClick(e);
+          }}>
+            <img src={logoImg} alt="TechVedhu Logo" className="nav-logo-img" />
             <span className="logo-text">Tech<span className="logo-accent">Vedhu</span></span>
           </Link>
           <button className="drawer-close" onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}>
@@ -104,18 +175,111 @@ export default function Navbar() {
         </div>
 
         <ul className="mobile-nav-list">
-          {navLinks.map(({ label, path }) => (
-            <li key={path}>
-              <Link
-                to={path}
-                className={`mobile-link${location.pathname === path ? ' active' : ''}`}
-                onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}
-              >
-                {label}
-                <i className="bi bi-arrow-right"></i>
-              </Link>
-            </li>
-          ))}
+          {/* Home */}
+          <li>
+            <Link
+              to="/"
+              className={`mobile-link${location.pathname === '/' ? ' active' : ''}`}
+              onClick={(e) => {
+                setMenuOpen(false);
+                document.body.style.overflow = '';
+                handleHomeClick(e);
+              }}
+            >
+              Home
+              <i className="bi bi-arrow-right"></i>
+            </Link>
+          </li>
+
+          {/* Internship Program Mobile Accordion */}
+          <li>
+            <button
+              className={`mobile-link mobile-accordion-btn${location.pathname.startsWith('/internships') ? ' active' : ''}`}
+              onClick={() => setMobileInternshipsOpen(!mobileInternshipsOpen)}
+            >
+              <span>Internship Program</span>
+              <i className={`bi bi-chevron-${mobileInternshipsOpen ? 'up' : 'down'} accordion-icon`}></i>
+            </button>
+            <ul className={`mobile-submenu${mobileInternshipsOpen ? ' open' : ''}`}>
+              <li>
+                <Link
+                  to="/internships"
+                  className="mobile-submenu-link view-all-link"
+                  onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}
+                >
+                  <i className="bi bi-grid-fill"></i> View All Internships
+                </Link>
+              </li>
+              {internshipPrograms.map(course => (
+                <li key={course.id}>
+                  <Link
+                    to={`/internships/${course.slug}`}
+                    className={`mobile-submenu-link${location.pathname === `/internships/${course.slug}` ? ' active' : ''}`}
+                    onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}
+                  >
+                    <i className={`bi ${course.icon}`} style={{ color: course.color }}></i> {course.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+
+          {/* Career Launchpad Mobile Accordion */}
+          <li>
+            <button
+              className={`mobile-link mobile-accordion-btn${location.pathname.startsWith('/career-launch') ? ' active' : ''}`}
+              onClick={() => setMobileCareerOpen(!mobileCareerOpen)}
+            >
+              <span>Career Launchpad</span>
+              <i className={`bi bi-chevron-${mobileCareerOpen ? 'up' : 'down'} accordion-icon`}></i>
+            </button>
+            <ul className={`mobile-submenu${mobileCareerOpen ? ' open' : ''}`}>
+              <li>
+                <Link
+                  to="/career-launch"
+                  className="mobile-submenu-link view-all-link"
+                  onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}
+                >
+                  <i className="bi bi-grid-fill"></i> View All Career Tracks
+                </Link>
+              </li>
+              {careerLaunchPrograms.map(prog => (
+                <li key={prog.id}>
+                  <Link
+                    to={`/career-launch/${prog.slug}`}
+                    className={`mobile-submenu-link${location.pathname === `/career-launch/${prog.slug}` ? ' active' : ''}`}
+                    onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}
+                  >
+                    <i className={`bi ${prog.icon}`} style={{ color: prog.color }}></i> {prog.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+
+          {/* Scholarship */}
+          <li>
+            <Link
+              to="/scholarship"
+              className={`mobile-link${location.pathname === '/scholarship' ? ' active' : ''}`}
+              onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}
+            >
+              Scholarship
+              <i className="bi bi-arrow-right"></i>
+            </Link>
+          </li>
+
+          {/* Contact */}
+          <li>
+            <Link
+              to="/contact"
+              className={`mobile-link${location.pathname === '/contact' ? ' active' : ''}`}
+              onClick={() => { setMenuOpen(false); document.body.style.overflow = ''; }}
+            >
+              Contact
+              <i className="bi bi-arrow-right"></i>
+            </Link>
+          </li>
         </ul>
 
         <div className="mobile-drawer-cta">

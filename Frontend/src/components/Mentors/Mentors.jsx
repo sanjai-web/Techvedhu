@@ -2,6 +2,14 @@ import React from 'react';
 import { mentors } from '../../data/courses';
 import './Mentors.css';
 
+import mentor1 from '../../assets/mentor1.png';
+import mentor2 from '../../assets/mentor2.png';
+import mentor3 from '../../assets/mentor3.png';
+import mentor4 from '../../assets/mentor4.png';
+import mentor5 from '../../assets/mentor5.png';
+
+const mentorImages = [mentor1, mentor2, mentor3, mentor4, mentor5];
+
 const patterns = [
   // Dots grid
   `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='rgba(255,255,255,0.15)'/%3E%3C/svg%3E")`,
@@ -18,6 +26,8 @@ const patterns = [
 ];
 
 export default function Mentors() {
+  const displayedMentors = mentors.slice(0, 5);
+
   return (
     <section className="mentors-section section-padding" id="mentors">
       <div className="container">
@@ -34,22 +44,15 @@ export default function Mentors() {
         </div>
 
         <div className="mentors-grid">
-          {mentors.map((mentor, i) => (
+          {displayedMentors.map((mentor, i) => (
             <div key={mentor.id} className={`mentor-card reveal delay-${(i % 3 + 1) * 100}`}>
               
               {/* Cutout portrait image */}
               <div className="mentor-portrait-wrap">
                 <img
-                  src={mentor.avatar.replace('w=150&h=150', 'w=400&h=500').replace('fit=crop', 'fit=crop&crop=faces,top')}
+                  src={mentorImages[i]}
                   alt={mentor.name}
                   className="mentor-portrait-img"
-                  onError={(e) => {
-                    e.target.onError = null;
-                    const isFemale = ['Priya', 'Sneha', 'Kavya'].some(f => mentor.name.includes(f));
-                    e.target.src = isFemale 
-                      ? 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80' 
-                      : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=500&q=80';
-                  }}
                 />
               </div>
 

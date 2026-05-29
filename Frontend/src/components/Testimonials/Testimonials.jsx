@@ -8,12 +8,15 @@ export default function Testimonials() {
 
   useEffect(() => {
     if (!trackRef.current) return;
-    const activeEl = trackRef.current.querySelector('.testi-carousel-card.active');
+    const track = trackRef.current;
+    const activeEl = track.querySelector('.testi-carousel-card.active');
     if (activeEl) {
-      activeEl.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center'
+      const trackWidth = track.clientWidth;
+      const activeWidth = activeEl.clientWidth;
+      const activeLeft = activeEl.offsetLeft;
+      track.scrollTo({
+        left: activeLeft - trackWidth / 2 + activeWidth / 2,
+        behavior: 'smooth'
       });
     }
   }, [active]);

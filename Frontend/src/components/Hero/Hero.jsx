@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { stats, hiringPartners } from '../../data/courses';
 import './Hero.css';
+import heroImage from '../../assets/heroimage.png';
 
 const words = ['Internships', 'Mentorship', 'Placements', 'Skills', 'Careers'];
 
@@ -66,10 +67,10 @@ export default function Hero() {
 
         {/* ── LEFT: Text Content ── */}
         <div className="hero-left reveal">
-          <div className="hero-badge">
+          {/* <div className="hero-badge">
             <span className="badge-dot"></span>
             🚀 India's #1 Industry-Driven Internship Platform
-          </div>
+          </div> */}
 
           <h1 className="hero-title">
             Real-World
@@ -155,7 +156,7 @@ export default function Hero() {
           {/* Person cutout */}
           <div className="hero-person-wrap">
             <img
-              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&h=780&q=85"
+              src={heroImage}
               alt="Tech student"
               className="hero-person-img"
             />

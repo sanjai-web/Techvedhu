@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ScholarshipBanner from '../components/ScholarshipBanner/ScholarshipBanner';
 import ContactForm from '../components/ContactForm/ContactForm';
 import './ScholarshipPage.css';
+import schImage from '../assets/schimage.png';
 
 export default function ScholarshipPage() {
   const [step, setStep] = useState(1);
@@ -63,7 +64,7 @@ export default function ScholarshipPage() {
             {/* Person image */}
             <div className="sp-person-wrap">
               <img
-                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=500&h=680&q=85"
+                src={schImage}
                 alt="Scholarship student"
                 className="sp-person-img"
               />

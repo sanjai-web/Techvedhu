@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
+import logoImg from '../../assets/logo.png';
 
 export default function Footer() {
   return (
@@ -11,9 +12,7 @@ export default function Footer() {
             {/* Column 1: Brand */}
             <div className="footer-brand">
               <Link to="/" className="logo-brand-custom">
-                <svg width="40" height="36" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="footer-logo-svg">
-                  <path d="M6 4H15.5L20 15L24.5 4H34L25 24V32H15V24L6 4Z" fill="#ffffff"/>
-                </svg>
+                <img src={logoImg} alt="TechVedhu Logo" className="footer-logo-img" />
                 <span className="logo-text-custom">TECH VEDHU</span>
               </Link>
               <p className="footer-tagline-custom">

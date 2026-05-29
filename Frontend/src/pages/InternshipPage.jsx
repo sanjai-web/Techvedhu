@@ -261,7 +261,7 @@ export default function InternshipPage() {
         <div className="container text-center">
           <div className="section-label reveal"><i className="bi bi-mortarboard-fill"></i> All Programs</div>
           <h1 className="section-title reveal delay-100">
-            Explore Our <span className="gradient-text">15 Internship Programs</span>
+            Explore Our <span className="gradient-text">15+ Internship Programs</span>
           </h1>
           <p className="section-subtitle reveal delay-200">
             Each program is crafted by industry professionals and designed to give you real-world experience that top companies value.
