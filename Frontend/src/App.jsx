@@ -23,6 +23,9 @@ function AppContent() {
 
   // Global scroll reveal observer — re-runs on every route change
   useEffect(() => {
+    // Keep track of which elements have already been revealed to persist class across React re-renders
+    const revealedElements = new WeakSet();
+
     // Small delay so React finishes rendering the new page before we observe
     const timer = setTimeout(() => {
       const observer = new IntersectionObserver(
@@ -30,6 +33,7 @@ function AppContent() {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('visible');
+              revealedElements.add(entry.target);
             }
           });
         },
@@ -39,7 +43,46 @@ function AppContent() {
       const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
       revealEls.forEach((el) => observer.observe(el));
 
-      return () => observer.disconnect();
+      // MutationObserver to handle dynamic elements and prevent React re-renders from stripping 'visible' class
+      const mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          // 1. Restore 'visible' class if React re-renders and removes it
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const target = mutation.target;
+            if (
+              revealedElements.has(target) &&
+              !target.classList.contains('visible')
+            ) {
+              target.classList.add('visible');
+            }
+          }
+
+          // 2. Observe newly added DOM nodes that have reveal classes
+          if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach((node) => {
+              if (node.nodeType === 1) { // Node.ELEMENT_NODE
+                if (node.matches('.reveal, .reveal-left, .reveal-right, .reveal-scale')) {
+                  observer.observe(node);
+                }
+                const children = node.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+                children.forEach((child) => observer.observe(child));
+              }
+            });
+          }
+        });
+      });
+
+      mutationObserver.observe(document.body, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        attributeFilter: ['class'],
+      });
+
+      return () => {
+        observer.disconnect();
+        mutationObserver.disconnect();
+      };
     }, 100);
 
     return () => clearTimeout(timer);

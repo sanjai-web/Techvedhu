@@ -1,3 +1,5 @@
+import marketingSalesImg from '../assets/marketing_sales.png';
+
 export const internshipPrograms = [
   {
     id: 1,
@@ -134,7 +136,7 @@ export const internshipPrograms = [
     duration: '2 Months',
     level: 'Beginner',
     category: 'Business',
-    image: 'https://images.unsplash.com/photo-1552581230-c01591d3c99a?auto=format&fit=crop&w=600&h=400&q=80',
+    image: marketingSalesImg,
     description: 'Build sales funnels, CRM strategies, and growth frameworks used by top startups and enterprises.',
     tools: ['Salesforce', 'HubSpot', 'Zoho CRM', 'LinkedIn Sales', 'Excel', 'Notion'],
     outcomes: ['B2B/B2C sales strategies', 'CRM management', 'Lead generation', 'Pitch decks']

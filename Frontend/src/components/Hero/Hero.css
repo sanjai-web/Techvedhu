@@ -263,8 +263,8 @@
 
 /* Badge positions matching screenshot */
 .fb-1 {
-  top: 40px;
-  left: 50%;
+  top: -24px;
+  left: 40%;
   transform: translateX(-50%);
   animation-delay: 0s;
 }
