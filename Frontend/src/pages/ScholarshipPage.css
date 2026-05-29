@@ -1,4 +1,4 @@
-﻿/* ========================
+/* ========================
    SCHOLARSHIP PAGE — Sky Blueprint
    ======================== */
 
@@ -21,7 +21,7 @@
 .sp-person-wrap { position: relative; width: 280px; height: 400px; z-index: 1; }
 .sp-person-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 48% 48% 0 0 / 30% 30% 0 0; filter: drop-shadow(0 16px 32px rgba(37,99,235,0.15)); }
 .sp-float-badge { position: absolute; width: 46px; height: 46px; border-radius: 50%; background: #2563EB; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #ffffff; box-shadow: 0 8px 24px rgba(37,99,235,0.35); }
-.sp-badge-1 { top: 30px; left: 50%; animation: badge-float-sp 4s ease-in-out infinite; }
+.sp-badge-1 { top: -24px; left: 60%; animation: badge-float-sp 4s ease-in-out infinite; }
 .sp-badge-2 { top: 110px; left: -18px; animation: badge-float 4s ease-in-out infinite 1s; }
 .sp-badge-3 { bottom: 140px; right: -16px; animation: badge-float 4s ease-in-out infinite 2s; }
 @keyframes badge-float { 0%,100%{transform:translateY(0) scale(1);} 50%{transform:translateY(-10px) scale(1.05);} }

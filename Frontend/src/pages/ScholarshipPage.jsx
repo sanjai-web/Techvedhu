@@ -27,7 +27,7 @@ export default function ScholarshipPage() {
         <div className="container sp-hero-grid">
           {/* Left text */}
           <div className="sp-hero-left reveal">
-            <div className="section-label">
+            <div className="section-label" >
               <i className="bi bi-gift-fill"></i> Scholarship Program
             </div>
             <h1 className="section-title" style={{ textAlign: 'left' }}>
