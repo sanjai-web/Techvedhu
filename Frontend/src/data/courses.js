@@ -1,4 +1,5 @@
 import marketingSalesImg from '../assets/marketing_sales.png';
+import cognizantLogo from '../assets/cognizant.svg';
 
 export const internshipPrograms = [
   {
@@ -371,16 +372,20 @@ export const stats = [
   { value: 15, suffix: 'LPA', label: 'Avg. Package', icon: 'bi-cash-stack' },
 ];
 
+
+
+
+
 export const hiringPartners = [
-  { name: 'Cognizant', logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Cognizant_logo_2022.svg' },
+  { name: 'Cognizant', logo: cognizantLogo },
   { name: 'Accenture', logo: 'https://www.vectorlogo.zone/logos/accenture/accenture-ar21.svg' },
   { name: 'Zoho', logo: 'https://www.vectorlogo.zone/logos/zoho/zoho-ar21.svg' },
   { name: 'Microsoft', logo: 'https://www.vectorlogo.zone/logos/microsoft/microsoft-ar21.svg' },
   { name: 'Amazon', logo: 'https://www.vectorlogo.zone/logos/amazon/amazon-ar21.svg' },
   { name: 'Walmart', logo: 'https://www.vectorlogo.zone/logos/walmart/walmart-ar21.svg' },
   { name: 'Google', logo: 'https://www.vectorlogo.zone/logos/google/google-ar21.svg' },
-  { name: 'Infosys', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg' },
-  { name: 'TCS', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services.svg' },
+  { name: 'Infosys', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg'},
+  { name: 'TCS', logo: 'https://cdn.worldvectorlogo.com/logos/tcs.svg' },
   { name: 'IBM', logo: 'https://www.vectorlogo.zone/logos/ibm/ibm-ar21.svg' },
   { name: 'Oracle', logo: 'https://www.vectorlogo.zone/logos/oracle/oracle-ar21.svg' }
 ];

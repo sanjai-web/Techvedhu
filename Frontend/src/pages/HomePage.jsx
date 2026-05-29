@@ -100,7 +100,7 @@ export default function HomePage() {
               <div className="marquee-track">
                 {[...hiringPartners, ...hiringPartners].map((partner, i) => (
                   <div key={i} className="learner-logo">
-                    <img src={partner.logo} alt={partner.name} className="learner-logo-img" />
+                    <img src={partner.logo} alt={partner.name} className="learner-logo-img" referrerPolicy="no-referrer" />
                   </div>
                 ))}
               </div>

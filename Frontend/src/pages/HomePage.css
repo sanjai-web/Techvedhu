@@ -284,27 +284,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
-  height: 40px;
-  min-width: 140px;
+  padding: 0 20px;
+  height: 70px;
+  min-width: 180px;
   background: transparent;
   border: none;
 }
 
 .learner-logo-img {
-  max-height: 28px;
-  max-width: 100px;
+  max-height: 56px;
+  max-width: 160px;
   object-fit: contain;
   transition: transform 0.2s ease, opacity 0.2s ease;
-  /* In light theme, give logos a blue tint to stay visible */
-  filter: brightness(0) saturate(100%) invert(25%) sepia(80%) saturate(600%) hue-rotate(200deg);
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .learner-logo-img:hover {
   transform: scale(1.06);
-  opacity: 0.9;
-  filter: brightness(0) saturate(100%) invert(25%) sepia(80%) saturate(600%) hue-rotate(200deg);
+  opacity: 1;
 }
 
 /* Free Demo Banner Section */

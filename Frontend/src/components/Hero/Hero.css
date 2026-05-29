@@ -377,30 +377,29 @@
   display: flex;
   gap: 40px;
   width: max-content;
-  animation: marquee 22s linear infinite;
+  animation: marquee 50s linear infinite;
 }
 
 .partner-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  min-width: 130px;
+  height: 70px;
+  min-width: 180px;
   transition: transform var(--transition-fast);
 }
 
 .partner-logo:hover { transform: translateY(-2px); }
 
 .partner-logo-img {
-  max-height: 32px;
-  max-width: 110px;
+  max-height: 56px;
+  max-width: 160px;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(500%) hue-rotate(200deg);
-  opacity: 0.5;
+  opacity: 0.9;
   transition: opacity 0.2s ease;
 }
 
-.partner-logo:hover .partner-logo-img { opacity: 0.85; }
+.partner-logo:hover .partner-logo-img { opacity: 1; }
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {

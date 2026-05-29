@@ -193,7 +193,7 @@ export default function Hero() {
             <div className="marquee-track">
               {[...hiringPartners, ...hiringPartners].map((partner, i) => (
                 <div key={i} className="partner-logo">
-                  <img src={partner.logo} alt={partner.name} className="partner-logo-img" />
+                  <img src={partner.logo} alt={partner.name} className="partner-logo-img" referrerPolicy="no-referrer" />
                 </div>
               ))}
             </div>
